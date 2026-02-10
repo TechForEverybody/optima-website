@@ -3,7 +3,6 @@ import Lenis from 'lenis'
 import { TooltipProvider } from './components/ui/tooltip'
 import { ThemeProvider } from './providers/theme-provider'
 import Router from './router/Router'
-import Header from './layout/Header'
 
 function App() {
 

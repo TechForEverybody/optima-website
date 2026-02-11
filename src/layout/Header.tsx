@@ -82,24 +82,18 @@ function Header() {
             )}
         >
             <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="flex h-16 items-center justify-between lg:h-20">
+                <div className="flex h-24 items-center justify-between lg:h-24">
                     <motion.div
-                        className="flex-shrink-0"
+                        className="shrink-0"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                     >
-                        <Link to="/" className="flex items-center gap-2">
-                            <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center overflow-hidden">
-                                <span className="text-xl font-bold text-primary-foreground">O</span>
-                                <motion.div
-                                    className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent"
-                                    animate={{ x: ['-100%', '100%'] }}
-                                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                                />
-                            </div>
-                            <span className="text-xl font-bold tracking-tight text-foreground">
-                                Optima
-                            </span>
+                        <Link to="/" className="flex items-center">
+                            <img
+                                src="/logo-transparent.png"
+                                alt="Value Assure Consulting"
+                                className="h-20 w-auto object-contain"
+                            />
                         </Link>
                     </motion.div>
 
@@ -197,11 +191,12 @@ function Header() {
                             <SheetContent side="right" className="w-full sm:max-w-md p-0" showCloseButton={false}>
                                 <div className="flex flex-col h-full">
                                     <div className="flex items-center justify-between p-4 border-b border-border">
-                                        <Link to="/" className="flex items-center gap-2">
-                                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                                                <span className="text-lg font-bold text-primary-foreground">O</span>
-                                            </div>
-                                            <span className="text-lg font-bold text-foreground">Optima</span>
+                                        <Link to="/" className="flex items-center">
+                                            <img
+                                                src="/logo-transparent.png"
+                                                alt="Value Assure Consulting"
+                                                className="h-10 w-auto object-contain"
+                                            />
                                         </Link>
                                         <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)}>
                                             <X className="h-5 w-5" />

@@ -1,5 +1,5 @@
 import { motion } from "motion/react"
-import { Database, Search, Activity, UserCheck, ShieldCheck, Server, Globe, HardDrive, Cloud, ArrowDown, ArrowRight } from "lucide-react"
+import { Database, Search, Activity, UserCheck, ShieldCheck, Server, Globe, HardDrive, Cloud, ArrowDown } from "lucide-react"
 
 type Props = {}
 

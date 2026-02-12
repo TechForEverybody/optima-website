@@ -1,12 +1,15 @@
+import MainWebsiteLayout from "@/layout/MainWebsiteLayout"
+import SolutionHero from "./SolutionHero"
+import SolutionDiagram from "./SolutionDiagram"
+
 type Props = {}
 
-function SolutionsPage({}: Props) {
+function SolutionsPage({ }: Props) {
     return (
-        <div className="min-h-screen">
-            <div className="container mx-auto px-4 py-16">
-                <h1 className="text-4xl font-bold">Solutions Overview</h1>
-            </div>
-        </div>
+        <MainWebsiteLayout>
+            <SolutionHero />
+            <SolutionDiagram />
+        </MainWebsiteLayout>
     )
 }
 

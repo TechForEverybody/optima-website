@@ -1,12 +1,21 @@
+import MainWebsiteLayout from "@/layout/MainWebsiteLayout"
+import PlatformApproach from "./PlatformApproach"
+import ToolDriven from "./ToolDriven"
+import PrimaryPlatformPartners from "./PrimaryPlatformPartners"
+import PlatformSupports from "./PlatformSupports"
+import DifferentApproach from "./DifferentApproach"
+
 type Props = {}
 
 function PlatformPage({}: Props) {
     return (
-        <div className="min-h-screen">
-            <div className="container mx-auto px-4 py-16">
-                <h1 className="text-4xl font-bold">Platform</h1>
-            </div>
-        </div>
+        <MainWebsiteLayout>
+                <PlatformApproach />
+                <ToolDriven />
+                <PrimaryPlatformPartners />
+                <PlatformSupports />
+                <DifferentApproach />
+        </MainWebsiteLayout>
     )
 }
 

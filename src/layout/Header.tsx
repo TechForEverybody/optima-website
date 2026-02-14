@@ -21,24 +21,24 @@ import { cn } from '@/lib/utils'
 
 const solutionItems = [
     {
-        title: 'Data Integration',
-        description: 'Seamless data connectivity across all your systems',
-        href: '/solutions/data-integration',
+        title: 'Data Quality Assessment',
+        description: 'Fact-based understanding of data quality risks and impact',
+        href: '/solutions/data-quality-assessment',
     },
     {
-        title: 'Data Analytics',
-        description: 'Transform raw data into actionable insights',
-        href: '/solutions/data-analytics',
+        title: 'Data Quality Monitoring',
+        description: 'Proactive visibility with thresholds and early warnings',
+        href: '/solutions/data-quality-monitoring',
     },
     {
-        title: 'Data Governance',
-        description: 'Ensure compliance and data quality standards',
-        href: '/solutions/data-governance',
+        title: 'Data Issue Remediation',
+        description: 'Structured remediation with clear ownership and workflows',
+        href: '/solutions/data-issue-remediation',
     },
     {
-        title: 'Data Migration',
-        description: 'Safe and efficient data transfer solutions',
-        href: '/solutions/data-migration',
+        title: 'Data Governance Enablement',
+        description: 'Operating model and roles to sustain improvements at scale',
+        href: '/solutions/data-governance-enablement',
     },
 ]
 

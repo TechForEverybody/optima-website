@@ -1,36 +1,218 @@
 import { motion } from "motion/react"
-import { useRef, useMemo } from "react"
-import { ArrowRight, Shield, RefreshCw, Target, CheckCircle, Sparkles } from "lucide-react"
+import { useRef, useMemo, useState } from "react"
+import { ArrowRight, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "@/providers/theme-provider"
 import Particles from "@/components/Particles"
+import { solutions } from "./solutionsData"
 
-const lifecycleStages = [
-    { 
-        icon: Target, 
-        label: "Assess", 
-        description: "Identify gaps",
-        color: "from-blue-500/20 to-blue-600/10"
-    },
-    { 
-        icon: Shield, 
-        label: "Control", 
-        description: "Implement rules",
-        color: "from-violet-500/20 to-violet-600/10"
-    },
-    { 
-        icon: RefreshCw, 
-        label: "Govern", 
-        description: "Establish ownership",
-        color: "from-amber-500/20 to-amber-600/10"
-    },
-    { 
-        icon: CheckCircle, 
-        label: "Sustain", 
-        description: "Continuous trust",
-        color: "from-emerald-500/20 to-emerald-600/10"
-    },
+const stageColors = [
+    { primary: "#3b82f6", secondary: "#60a5fa", glow: "rgba(59, 130, 246, 0.5)", bg: "bg-blue-500" },
+    { primary: "#06b6d4", secondary: "#22d3ee", glow: "rgba(6, 182, 212, 0.5)", bg: "bg-cyan-500" },
+    { primary: "#f59e0b", secondary: "#fbbf24", glow: "rgba(245, 158, 11, 0.5)", bg: "bg-amber-500" },
+    { primary: "#10b981", secondary: "#34d399", glow: "rgba(16, 185, 129, 0.5)", bg: "bg-emerald-500" }
 ]
+
+function LifecycleDiagram() {
+    const [activeIndex, setActiveIndex] = useState<number | null>(null)
+
+    return (
+        <div className="relative w-full max-w-xl mx-auto py-8">
+            <div className="hidden sm:block absolute top-1/2 left-8 right-8 h-1 -translate-y-1/2">
+                <div className="absolute inset-0 bg-border/30 rounded-full" />
+                <motion.div
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute inset-0 origin-left rounded-full"
+                    style={{
+                        background: "linear-gradient(90deg, #3b82f6, #06b6d4, #f59e0b, #10b981)"
+                    }}
+                />
+                
+                {[0, 1, 2].map((i) => (
+                    <motion.div
+                        key={i}
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 0.5 + i * 0.2, duration: 0.4 }}
+                        className="absolute top-1/2 -translate-y-1/2"
+                        style={{ left: `${25 + i * 25}%` }}
+                    >
+                        <motion.div
+                            animate={{ x: [0, 8, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.3 }}
+                            className="flex items-center"
+                        >
+                            <ChevronRight 
+                                className="h-4 w-4" 
+                                style={{ color: stageColors[i + 1].primary }}
+                            />
+                        </motion.div>
+                    </motion.div>
+                ))}
+            </div>
+
+            <div className="sm:hidden absolute left-6 top-8 bottom-8 w-1">
+                <div className="absolute inset-0 bg-border/30 rounded-full" />
+                <motion.div
+                    initial={{ scaleY: 0 }}
+                    animate={{ scaleY: 1 }}
+                    transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute inset-0 origin-top rounded-full"
+                    style={{
+                        background: "linear-gradient(180deg, #3b82f6, #06b6d4, #f59e0b, #10b981)"
+                    }}
+                />
+            </div>
+
+            <div className="relative flex flex-col sm:flex-row sm:justify-between gap-6 sm:gap-2">
+                {solutions.map((solution, index) => {
+                    const color = stageColors[index]
+                    const isActive = activeIndex === index
+                    
+                    return (
+                        <motion.div
+                            key={solution.id}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ 
+                                duration: 0.6, 
+                                delay: 0.2 + index * 0.15,
+                                ease: [0.22, 1, 0.36, 1]
+                            }}
+                            onHoverStart={() => setActiveIndex(index)}
+                            onHoverEnd={() => setActiveIndex(null)}
+                            className="relative flex-1 pl-10 sm:pl-0"
+                        >
+                            <div className="sm:hidden absolute left-4 top-6 w-5 h-5 rounded-full border-4 border-background z-10"
+                                style={{ background: color.primary }}
+                            />
+
+                            <motion.div
+                                animate={{ 
+                                    scale: isActive ? 1.02 : 1,
+                                    y: isActive ? -4 : 0
+                                }}
+                                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                                className="relative cursor-pointer group"
+                            >
+                                <div className="hidden sm:flex justify-center mb-4">
+                                    <motion.div
+                                        animate={{
+                                            scale: isActive ? 1.2 : 1,
+                                            boxShadow: isActive 
+                                                ? `0 0 30px ${color.glow}`
+                                                : `0 0 0px transparent`
+                                        }}
+                                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                                        className="relative w-12 h-12 rounded-full flex items-center justify-center z-10"
+                                        style={{
+                                            background: `linear-gradient(135deg, ${color.primary}, ${color.secondary})`,
+                                            border: "4px solid var(--background)"
+                                        }}
+                                    >
+                                        <solution.icon className="h-5 w-5 text-white" />
+                                        
+                                        <motion.div
+                                            className="absolute inset-0 rounded-full"
+                                            animate={{ scale: isActive ? [1, 1.4, 1] : 1, opacity: isActive ? [0.5, 0, 0.5] : 0 }}
+                                            transition={{ duration: 1.5, repeat: Infinity }}
+                                            style={{ background: color.primary }}
+                                        />
+                                    </motion.div>
+                                </div>
+
+                                <motion.div
+                                    animate={{
+                                        boxShadow: isActive 
+                                            ? `0 20px 40px -12px ${color.glow}, 0 0 0 1px ${color.primary}30`
+                                            : '0 4px 20px -4px rgba(0,0,0,0.1), 0 0 0 1px var(--border)'
+                                    }}
+                                    className="relative overflow-hidden rounded-2xl bg-background/80 backdrop-blur-xl p-4"
+                                >
+                                    <motion.div
+                                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                                        style={{
+                                            background: `linear-gradient(135deg, ${color.primary}10 0%, transparent 60%)`
+                                        }}
+                                    />
+
+                                    <motion.div
+                                        className="absolute top-0 left-0 right-0 h-1 origin-left"
+                                        style={{ background: `linear-gradient(90deg, ${color.primary}, ${color.secondary})` }}
+                                        initial={{ scaleX: 0 }}
+                                        animate={{ scaleX: isActive ? 1 : 0 }}
+                                        transition={{ duration: 0.3 }}
+                                    />
+
+                                    <div className="relative">
+                                        <div className="flex items-center gap-2 mb-2">
+                                            <span 
+                                                className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full"
+                                                style={{ 
+                                                    background: `${color.primary}15`,
+                                                    color: color.primary 
+                                                }}
+                                            >
+                                                Stage {index + 1}
+                                            </span>
+                                        </div>
+                                        
+                                        <div className="flex items-center gap-2 mb-1 sm:hidden">
+                                            <div 
+                                                className="w-8 h-8 rounded-lg flex items-center justify-center"
+                                                style={{ background: `${color.primary}20` }}
+                                            >
+                                                <solution.icon className="h-4 w-4" style={{ color: color.primary }} />
+                                            </div>
+                                            <h3 className="text-base font-bold text-foreground">
+                                                {solution.stage}
+                                            </h3>
+                                        </div>
+                                        
+                                        <h3 className="hidden sm:block text-base font-bold text-foreground mb-1 text-center">
+                                            {solution.stage}
+                                        </h3>
+                                        
+                                        <p className="text-xs text-muted-foreground leading-relaxed sm:text-center">
+                                            {solution.shortDescription}
+                                        </p>
+                                    </div>
+                                </motion.div>
+                            </motion.div>
+                        </motion.div>
+                    )
+                })}
+            </div>
+
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.2, duration: 0.6 }}
+                className="hidden sm:flex justify-center mt-8"
+            >
+                <div className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-background/80 backdrop-blur-xl border border-border/50 shadow-lg">
+                    <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                        className="w-5 h-5 rounded-full"
+                        style={{
+                            background: "conic-gradient(from 0deg, #3b82f6, #06b6d4, #f59e0b, #10b981, #3b82f6)"
+                        }}
+                    />
+                    <span className="text-sm font-medium text-foreground">Continuous Improvement Cycle</span>
+                    <motion.div
+                        animate={{ x: [0, 4, 0] }}
+                        transition={{ duration: 1, repeat: Infinity }}
+                    >
+                        <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                    </motion.div>
+                </div>
+            </motion.div>
+        </div>
+    )
+}
 
 export default function SolutionHero() {
     const containerRef = useRef<HTMLElement>(null)
@@ -79,7 +261,6 @@ export default function SolutionHero() {
                             transition={{ duration: 0.6, delay: 0.1 }}
                             className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm px-4 py-2 mb-6"
                         >
-                            <Sparkles className="h-4 w-4 text-primary" />
                             <span className="text-sm font-medium text-primary">Solutions Overview</span>
                         </motion.div>
 
@@ -142,115 +323,9 @@ export default function SolutionHero() {
                         initial={{ opacity: 0, x: 40 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                        className="order-1 lg:order-2 relative mt-10 lg:mt-0"
+                        className="order-1 lg:order-2 relative"
                     >
-                        <div className="relative w-full max-w-md mx-auto">
-                            <motion.div
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
-                                className="absolute -inset-8 opacity-60"
-                            >
-                                <div className="absolute inset-0 rounded-full border border-dashed border-primary/15" />
-                            </motion.div>
-
-                            <div className="relative grid grid-cols-2 gap-4">
-                                {lifecycleStages.map((stage, index) => (
-                                    <motion.div
-                                        key={stage.label}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ 
-                                            duration: 0.5, 
-                                            delay: 0.5 + index * 0.12,
-                                            ease: [0.22, 1, 0.36, 1]
-                                        }}
-                                        className="relative"
-                                    >
-                                        <motion.div
-                                            whileHover={{ scale: 1.03, y: -2 }}
-                                            transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                                            className={`group relative p-5 rounded-2xl border border-border/50 backdrop-blur-xl shadow-lg hover:shadow-xl cursor-pointer overflow-hidden ${
-                                                index === 0 ? 'bg-blue-500/10 hover:bg-blue-500/15' :
-                                                index === 1 ? 'bg-violet-500/10 hover:bg-violet-500/15' :
-                                                index === 2 ? 'bg-amber-500/10 hover:bg-amber-500/15' :
-                                                'bg-emerald-500/10 hover:bg-emerald-500/15'
-                                            } transition-colors duration-300`}
-                                        >
-                                            <div className={`absolute top-0 right-0 w-20 h-20 rounded-full blur-2xl opacity-30 ${
-                                                index === 0 ? 'bg-blue-500' :
-                                                index === 1 ? 'bg-violet-500' :
-                                                index === 2 ? 'bg-amber-500' :
-                                                'bg-emerald-500'
-                                            }`} />
-                                            
-                                            <div className="relative flex flex-col items-center text-center gap-3">
-                                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center border transition-colors duration-300 ${
-                                                    index === 0 ? 'bg-blue-500/20 border-blue-500/30 group-hover:bg-blue-500/30' :
-                                                    index === 1 ? 'bg-violet-500/20 border-violet-500/30 group-hover:bg-violet-500/30' :
-                                                    index === 2 ? 'bg-amber-500/20 border-amber-500/30 group-hover:bg-amber-500/30' :
-                                                    'bg-emerald-500/20 border-emerald-500/30 group-hover:bg-emerald-500/30'
-                                                }`}>
-                                                    <stage.icon className={`h-6 w-6 ${
-                                                        index === 0 ? 'text-blue-500' :
-                                                        index === 1 ? 'text-violet-500' :
-                                                        index === 2 ? 'text-amber-500' :
-                                                        'text-emerald-500'
-                                                    }`} />
-                                                </div>
-                                                <div>
-                                                    <div className="text-base font-semibold text-foreground mb-1">{stage.label}</div>
-                                                    <div className="text-xs text-muted-foreground">{stage.description}</div>
-                                                </div>
-                                            </div>
-
-                                            {index < 3 && (
-                                                <div className={`absolute ${
-                                                    index === 0 ? 'bottom-0 right-0 translate-x-1/2 translate-y-1/2' :
-                                                    index === 1 ? 'bottom-0 left-0 -translate-x-1/2 translate-y-1/2' :
-                                                    'top-0 right-0 translate-x-1/2 -translate-y-1/2'
-                                                } z-20`}>
-                                                    <motion.div
-                                                        animate={{ rotate: [0, 360] }}
-                                                        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                                                        className="w-6 h-6 rounded-full bg-background border border-border/50 flex items-center justify-center shadow-md"
-                                                    >
-                                                        <ArrowRight className={`h-3 w-3 ${
-                                                            index === 0 ? 'text-blue-500 rotate-45' :
-                                                            index === 1 ? 'text-violet-500 rotate-135' :
-                                                            'text-amber-500 -rotate-45'
-                                                        }`} />
-                                                    </motion.div>
-                                                </div>
-                                            )}
-                                        </motion.div>
-                                    </motion.div>
-                                ))}
-                            </div>
-
-                            <motion.div
-                                initial={{ scale: 0.8, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                transition={{ duration: 0.6, delay: 0.9 }}
-                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
-                            >
-                                <motion.div
-                                    animate={{ 
-                                        boxShadow: [
-                                            '0 0 20px rgba(59, 130, 246, 0.3)',
-                                            '0 0 40px rgba(139, 92, 246, 0.3)',
-                                            '0 0 20px rgba(59, 130, 246, 0.3)'
-                                        ]
-                                    }}
-                                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                                    className="w-20 h-20 rounded-2xl bg-background border border-border/50 backdrop-blur-xl flex items-center justify-center"
-                                >
-                                    <div className="text-center">
-                                        <div className="text-2xl font-bold text-foreground">4</div>
-                                        <div className="text-[10px] text-muted-foreground font-medium uppercase tracking-wider">Stages</div>
-                                    </div>
-                                </motion.div>
-                            </motion.div>
-                        </div>
+                        <LifecycleDiagram />
                     </motion.div>
                 </div>
             </div>

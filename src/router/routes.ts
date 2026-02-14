@@ -1,9 +1,9 @@
 import HomePage from '@/pages/home'
 import SolutionsPage from '@/pages/solutions'
-import DataIntegrationPage from '@/pages/solutions/data-integration'
-import DataAnalyticsPage from '@/pages/solutions/data-analytics'
-import DataGovernancePage from '@/pages/solutions/data-governance'
-import DataMigrationPage from '@/pages/solutions/data-migration'
+import DataQualityAssessmentPage from '@/pages/solutions/data-quality-assessment'
+import DataQualityMonitoringPage from '@/pages/solutions/data-quality-monitoring'
+import DataIssueRemediationPage from '@/pages/solutions/data-issue-remediation'
+import DataGovernanceEnablementPage from '@/pages/solutions/data-governance-enablement'
 import PlatformPage from '@/pages/platform'
 import IndustrySectorsPage from '@/pages/industry-sector'
 import DapDataQualityPage from '@/pages/dap-data-quality'
@@ -23,24 +23,24 @@ export const routes = [
         component: SolutionsPage
     },
     {
-        path: '/solutions/data-integration',
-        name: 'Data Integration',
-        component: DataIntegrationPage
+        path: '/solutions/data-quality-assessment',
+        name: 'Data Quality Assessment',
+        component: DataQualityAssessmentPage
     },
     {
-        path: '/solutions/data-analytics',
-        name: 'Data Analytics',
-        component: DataAnalyticsPage
+        path: '/solutions/data-quality-monitoring',
+        name: 'Data Quality Monitoring',
+        component: DataQualityMonitoringPage
     },
     {
-        path: '/solutions/data-governance',
-        name: 'Data Governance',
-        component: DataGovernancePage
+        path: '/solutions/data-issue-remediation',
+        name: 'Data Issue Remediation',
+        component: DataIssueRemediationPage
     },
     {
-        path: '/solutions/data-migration',
-        name: 'Data Migration',
-        component: DataMigrationPage
+        path: '/solutions/data-governance-enablement',
+        name: 'Data Governance Enablement',
+        component: DataGovernanceEnablementPage
     },
     {
         path: '/platform',

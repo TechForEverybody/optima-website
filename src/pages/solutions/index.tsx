@@ -1,6 +1,7 @@
 import MainWebsiteLayout from "@/layout/MainWebsiteLayout"
 import SolutionHero from "./SolutionHero"
-import SolutionDiagram from "./SolutionDiagram"
+import SolutionCTA from "./SolutionCTA"
+import SolutionsList from "./SolutionsList"
 
 type Props = {}
 
@@ -8,7 +9,8 @@ function SolutionsPage({ }: Props) {
     return (
         <MainWebsiteLayout>
             <SolutionHero />
-            <SolutionDiagram />
+            <SolutionsList />
+            <SolutionCTA />
         </MainWebsiteLayout>
     )
 }

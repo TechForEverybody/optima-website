@@ -1,6 +1,6 @@
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react"
 import { useRef } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { 
     ArrowRight,
     ArrowUpRight,
@@ -168,6 +168,8 @@ function SolutionCard({ solution, index }: { solution: SolutionStage, index: num
 }
 
 function SolutionsList({}: Props) {
+    const navigate = useNavigate()
+
     return (
         <section className="relative py-16 lg:py-24 bg-background overflow-hidden">
             <div className="absolute inset-0">
@@ -254,7 +256,7 @@ function SolutionsList({}: Props) {
                             <BarChart3 className="h-5 w-5 text-primary" />
                             <span>Need help choosing your starting point?</span>
                         </div>
-                        <Button variant="default" size="sm" className="rounded-xl group">
+                        <Button variant="default" size="sm" onClick={() => navigate("/contact")} className="rounded-xl group">
                             Talk to an Expert
                             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                         </Button>

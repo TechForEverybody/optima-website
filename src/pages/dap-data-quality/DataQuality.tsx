@@ -1,4 +1,5 @@
 import { useRef, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react"
 import {
   ArrowRight,
@@ -140,6 +141,7 @@ function FloatingOrb({ className, delay = 0 }: { className: string; delay?: numb
 }
 
 function HeroSection() {
+  const navigate = useNavigate()
   const containerRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -202,7 +204,7 @@ function HeroSection() {
       </div>
 
       <motion.div style={{ y, opacity }} className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 lg:px-12 w-full">
-        <div className="flex flex-col items-center justify-center py-20 lg:py-24">
+        <div className="flex flex-col items-center justify-center py-24 lg:py-36">
           <div className="max-w-4xl text-center">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -256,6 +258,7 @@ function HeroSection() {
             >
               <Button
                 size="lg"
+                onClick={() => navigate("/contact")}
                 className="h-14 px-8 text-base font-semibold rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/25 transition-all duration-300 group"
               >
                 Start a Data Quality Assessment
@@ -264,6 +267,7 @@ function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
+                onClick={() => navigate("/contact")}
                 className="h-14 px-8 text-base font-semibold rounded-xl border-2 hover:bg-secondary transition-all duration-300 backdrop-blur-sm"
               >
                 Schedule a Discussion
@@ -785,6 +789,8 @@ function GettingStartedSection() {
 }
 
 function CTASection() {
+  const navigate = useNavigate()
+
   return (
     <section className="relative py-10 lg:py-5 overflow-hidden">
       <div className="absolute inset-0 bg-linear-to-br from-primary/8 via-background to-accent/8 dark:from-primary/15 dark:via-background dark:to-accent/12" />
@@ -838,6 +844,7 @@ function CTASection() {
           >
             <Button
               size="lg"
+              onClick={() => navigate("/contact")}
               className="h-14 px-8 text-base font-semibold rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/25 transition-all duration-300 group"
             >
               Start a Data Quality Assessment
@@ -846,6 +853,7 @@ function CTASection() {
             <Button
               size="lg"
               variant="outline"
+              onClick={() => navigate("/contact")}
               className="h-14 px-8 text-base font-semibold rounded-xl border-2 hover:bg-secondary transition-all duration-300 backdrop-blur-sm"
             >
               Schedule a Discussion

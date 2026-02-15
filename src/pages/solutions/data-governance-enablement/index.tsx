@@ -1,5 +1,6 @@
 import { motion } from "motion/react"
 import { useRef, useMemo } from "react"
+import { useNavigate } from "react-router-dom"
 import { 
     Shield, 
     ArrowRight, 
@@ -109,6 +110,7 @@ const maturityLevels = [
 type Props = {}
 
 function DataGovernanceEnablementPage({}: Props) {
+    const navigate = useNavigate()
     const containerRef = useRef<HTMLElement>(null)
     const { theme } = useTheme()
 
@@ -188,6 +190,7 @@ function DataGovernanceEnablementPage({}: Props) {
                             >
                                 <Button 
                                     size="lg" 
+                                    onClick={() => navigate("/contact")}
                                     className="h-14 px-8 text-base font-semibold rounded-2xl bg-emerald-600 hover:bg-emerald-700 shadow-lg shadow-emerald-500/25 hover:shadow-xl hover:shadow-emerald-500/30 transition-all duration-300 group"
                                 >
                                     Enable Governance
@@ -196,6 +199,7 @@ function DataGovernanceEnablementPage({}: Props) {
                                 <Button 
                                     size="lg" 
                                     variant="outline" 
+                                    onClick={() => navigate("/contact")}
                                     className="h-14 px-8 text-base font-semibold rounded-2xl border-2 hover:bg-secondary/80 transition-all duration-300"
                                 >
                                     View Framework
@@ -532,6 +536,7 @@ function DataGovernanceEnablementPage({}: Props) {
                                 >
                                     <Button 
                                         size="lg" 
+                                        onClick={() => navigate("/contact")}
                                         className="h-14 px-8 text-base font-semibold rounded-2xl bg-emerald-600 hover:bg-emerald-700 shadow-lg shadow-emerald-500/25 hover:shadow-xl hover:shadow-emerald-500/30 transition-all duration-300 group"
                                     >
                                         Enable Governance
@@ -540,6 +545,7 @@ function DataGovernanceEnablementPage({}: Props) {
                                     <Button 
                                         size="lg" 
                                         variant="outline" 
+                                        onClick={() => navigate("/contact")}
                                         className="h-14 px-8 text-base font-semibold rounded-2xl border-2 hover:bg-secondary/80 transition-all duration-300 group"
                                     >
                                         <MessageSquare className="mr-2 h-5 w-5" />

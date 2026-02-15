@@ -1,5 +1,6 @@
 import { motion } from "motion/react"
 import { useRef, useMemo } from "react"
+import { useNavigate } from "react-router-dom"
 import { 
     Activity, 
     ArrowRight, 
@@ -100,6 +101,7 @@ const outcomes = [
 type Props = {}
 
 function DataQualityMonitoringPage({}: Props) {
+    const navigate = useNavigate()
     const containerRef = useRef<HTMLElement>(null)
     const { theme } = useTheme()
 
@@ -179,6 +181,7 @@ function DataQualityMonitoringPage({}: Props) {
                             >
                                 <Button 
                                     size="lg" 
+                                    onClick={() => navigate("/contact")}
                                     className="h-14 px-8 text-base font-semibold rounded-2xl bg-cyan-600 hover:bg-cyan-700 shadow-lg shadow-cyan-500/25 hover:shadow-xl hover:shadow-cyan-500/30 transition-all duration-300 group"
                                 >
                                     Enable Monitoring
@@ -187,6 +190,7 @@ function DataQualityMonitoringPage({}: Props) {
                                 <Button 
                                     size="lg" 
                                     variant="outline" 
+                                    onClick={() => navigate("/contact")}
                                     className="h-14 px-8 text-base font-semibold rounded-2xl border-2 hover:bg-secondary/80 transition-all duration-300"
                                 >
                                     View Demo Dashboard
@@ -518,6 +522,7 @@ function DataQualityMonitoringPage({}: Props) {
                                 >
                                     <Button 
                                         size="lg" 
+                                        onClick={() => navigate("/contact")}
                                         className="h-14 px-8 text-base font-semibold rounded-2xl bg-cyan-600 hover:bg-cyan-700 shadow-lg shadow-cyan-500/25 hover:shadow-xl hover:shadow-cyan-500/30 transition-all duration-300 group"
                                     >
                                         Enable Monitoring
@@ -526,6 +531,7 @@ function DataQualityMonitoringPage({}: Props) {
                                     <Button 
                                         size="lg" 
                                         variant="outline" 
+                                        onClick={() => navigate("/contact")}
                                         className="h-14 px-8 text-base font-semibold rounded-2xl border-2 hover:bg-secondary/80 transition-all duration-300 group"
                                     >
                                         <MessageSquare className="mr-2 h-5 w-5" />

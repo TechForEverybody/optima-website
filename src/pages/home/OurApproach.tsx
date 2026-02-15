@@ -48,7 +48,7 @@ const frameworkSteps = [
 
 export default function OurApproach({ }: Props) {
     return (
-        <section className="relative py-24 lg:py-32 bg-background overflow-hidden">
+        <section className="relative py-5 lg:py-10 bg-background overflow-hidden">
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/3 dark:bg-primary/2 rounded-full blur-3xl" />
                 <svg className="absolute inset-0 w-full h-full opacity-[0.02]" viewBox="0 0 100 100" preserveAspectRatio="none">

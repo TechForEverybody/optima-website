@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { motion } from "motion/react"
 import { Factory, Building2, Plane, Server, ArrowRight, Check, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -40,6 +41,7 @@ const reasons = [
 ]
 
 export default function IndustriesWeServe({ }: Props) {
+    const navigate = useNavigate()
     const [activeIndustry, setActiveIndustry] = useState(0)
 
     return (
@@ -60,7 +62,7 @@ export default function IndustriesWeServe({ }: Props) {
                     <div className="absolute -bottom-1/2 -left-1/4 w-[600px] h-[600px] bg-primary-foreground/5 rounded-full blur-[120px]" />
                 </div>
 
-                <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 py-24 lg:py-32">
+                <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 py-5 lg:py-10">
                     <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
                         <div>
                             <motion.div
@@ -168,7 +170,7 @@ export default function IndustriesWeServe({ }: Props) {
                 </div>
             </div>
 
-            <div className="relative bg-background py-24 lg:py-32">
+            <div className="relative bg-background py-5 lg:py-10">
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-primary to-transparent" />
                 </div>
@@ -270,7 +272,7 @@ export default function IndustriesWeServe({ }: Props) {
                             transition={{ duration: 0.5, delay: 0.3 }}
                             className="flex flex-col sm:flex-row items-center justify-center gap-4"
                         >
-                            <Button size="lg" className="h-14 px-10 text-base font-bold rounded-full group">
+                            <Button size="lg" onClick={() => navigate("/contact")} className="h-14 px-10 text-base font-bold rounded-full group">
                                 Start Assessment
                                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </Button>
@@ -278,6 +280,7 @@ export default function IndustriesWeServe({ }: Props) {
                             <Button
                                 variant="outline"
                                 size="lg"
+                                onClick={() => navigate("/contact")}
                                 className="h-14 px-10 text-base font-bold rounded-full border-2 border-primary/30 hover:border-primary hover:bg-primary/5"
                             >
                                 Request a Pilot

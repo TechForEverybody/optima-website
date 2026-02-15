@@ -153,7 +153,6 @@ function HomePage({ }: Props) {
         <div className="relative z-10">
           <HomeHero />
           
-          <SectionDivider variant="dots" />
           
           <RevealSection>
             <HomeDiagram />
@@ -171,7 +170,6 @@ function HomePage({ }: Props) {
             <OurApproach />
           </ParallaxSection>
           
-          <SectionDivider variant="dots" />
           
           <RevealSection delay={0.1}>
             <SolutionsWeOffer />

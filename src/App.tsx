@@ -30,9 +30,7 @@ function App() {
       <ThemeProvider>
         <TooltipProvider>
 
-          <main className="pt-16 lg:pt-20">
             <Router />
-          </main>
         </TooltipProvider>
       </ThemeProvider>
     </>

@@ -1,4 +1,5 @@
 import { useRef, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { motion, AnimatePresence, useInView, useScroll, useTransform } from "motion/react"
 import {
     Landmark,
@@ -206,6 +207,7 @@ const industries: Industry[] = [
 ]
 
 export default function Industries({}: Props) {
+    const navigate = useNavigate()
     const [activeIndex, setActiveIndex] = useState(0)
     const tabsRef = useRef<HTMLDivElement>(null)
 
@@ -408,6 +410,7 @@ export default function Industries({}: Props) {
                                         whileHover={{ scale: 1.03, y: -2 }}
                                         whileTap={{ scale: 0.98 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                                        onClick={() => navigate("/contact")}
                                         className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-[15px] shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/25 transition-shadow duration-300 cursor-pointer"
                                     >
                                         <ClipboardCheck className="w-4 h-4" />
@@ -419,6 +422,7 @@ export default function Industries({}: Props) {
                                         whileHover={{ scale: 1.03, y: -2 }}
                                         whileTap={{ scale: 0.98 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                                        onClick={() => navigate("/contact")}
                                         className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-secondary/80 dark:bg-secondary/50 text-foreground font-semibold text-[15px] border border-border hover:border-primary/20 transition-all duration-300 cursor-pointer"
                                     >
                                         <MessageSquare className="w-4 h-4" />

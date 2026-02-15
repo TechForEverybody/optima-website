@@ -17,6 +17,7 @@ import {
 } from "lucide-react"
 import BlurText from "@/components/BlurText"
 import GradientText from "@/components/GradientText"
+import { useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 
 type Props = {}
@@ -80,6 +81,8 @@ const journeySteps = [
 ]
 
 export default function DifferentApproach({}: Props) {
+    const navigate = useNavigate()
+
     return (
         <section className="relative py-24 lg:py-15 bg-background overflow-hidden">
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -325,6 +328,7 @@ export default function DifferentApproach({}: Props) {
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                                 <Button 
                                     size="lg" 
+                                    onClick={() => navigate("/contact")}
                                     className="w-full sm:w-auto gap-2 text-base px-8 py-6 rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all"
                                 >
                                     <Search className="w-5 h-5" />
@@ -334,6 +338,7 @@ export default function DifferentApproach({}: Props) {
                                 <Button 
                                     variant="outline" 
                                     size="lg" 
+                                    onClick={() => navigate("/contact")}
                                     className="w-full sm:w-auto gap-2 text-base px-8 py-6 rounded-xl border-2 hover:bg-primary/5 transition-all"
                                 >
                                     <MessageSquare className="w-5 h-5" />

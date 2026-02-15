@@ -1,10 +1,10 @@
 import { useRef } from "react"
+import { useNavigate } from "react-router-dom"
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react"
 import { ClipboardCheck, Activity, Users, Shield, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Magnet from "@/components/Magnet"
 import GradientText from "@/components/GradientText"
-import StarBorder from "@/components/StarBorder"
 
 type Props = {}
 
@@ -84,8 +84,10 @@ function TiltCard({ children, className = "" }: { children: React.ReactNode; cla
 }
 
 export default function SolutionsWeOffer({ }: Props) {
+    const navigate = useNavigate()
+
     return (
-        <section className="relative py-24 lg:py-32 bg-gradient-to-b from-secondary/30 via-background to-background overflow-hidden">
+        <section className="relative py-5 lg:py-10 bg-gradient-to-b from-secondary/30 via-background to-background overflow-hidden">
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/8 dark:bg-primary/4 rounded-full blur-[100px]" />
                 <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-accent/10 dark:bg-accent/5 rounded-full blur-[80px]" />
@@ -236,24 +238,18 @@ export default function SolutionsWeOffer({ }: Props) {
                     transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     className="mt-20 text-center"
                 >
-                    <StarBorder
-                        as="div"
-                        color="oklch(0.75 0.15 85)"
-                        speed="5s"
-                        className="inline-block"
-                    >
+      
                         <div className="flex flex-col sm:flex-row items-center gap-5 px-8 py-6 bg-background">
                             <p className="text-foreground font-semibold text-lg">
                                 Ready to transform your data quality?
                             </p>
                             <Magnet padding={80} magnetStrength={2}>
-                                <Button size="lg" className="rounded-xl group px-8">
+                                <Button size="lg" onClick={() => navigate("/contact")} className="rounded-xl group px-8">
                                     Get Started
                                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                 </Button>
                             </Magnet>
                         </div>
-                    </StarBorder>
                 </motion.div>
             </div>
         </section>

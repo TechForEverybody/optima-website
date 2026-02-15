@@ -15,6 +15,7 @@ import {
 } from "lucide-react"
 import ScrollFloat from "@/components/ScrollFloat"
 import ClickSpark from "@/components/ClickSpark"
+import { useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 
 type Props = {}
@@ -270,6 +271,8 @@ function EngagementPanel() {
 }
 
 export default function Engagements({}: Props) {
+    const navigate = useNavigate()
+
     return (
         <section className="relative bg-background overflow-hidden">
             <div className="relative py-24 lg:py-32">
@@ -394,6 +397,7 @@ export default function Engagements({}: Props) {
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                                 <Button
                                     size="lg"
+                                    onClick={() => navigate("/contact")}
                                     className="gap-2 text-base px-8 py-6 rounded-xl shadow-lg shadow-primary/15 hover:shadow-xl hover:shadow-primary/25 transition-shadow"
                                 >
                                     <Handshake className="w-5 h-5" />
@@ -403,6 +407,7 @@ export default function Engagements({}: Props) {
                                 <Button
                                     variant="outline"
                                     size="lg"
+                                    onClick={() => navigate("/contact")}
                                     className="gap-2 text-base px-8 py-6 rounded-xl border-2 hover:bg-primary/5 transition-all"
                                 >
                                     <MessageSquare className="w-5 h-5" />

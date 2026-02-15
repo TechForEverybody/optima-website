@@ -1,5 +1,6 @@
 import { motion } from "motion/react"
 import { useRef, useMemo, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { ArrowRight, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "@/providers/theme-provider"
@@ -215,6 +216,7 @@ function LifecycleDiagram() {
 }
 
 export default function SolutionHero() {
+    const navigate = useNavigate()
     const containerRef = useRef<HTMLElement>(null)
     const { theme } = useTheme()
 
@@ -248,7 +250,7 @@ export default function SolutionHero() {
             <div className="absolute inset-0 bg-linear-to-b from-background/40 via-background/60 to-background z-1" />
 
             <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16  items-center py-5 lg:py-0">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16  items-center py-20 lg:py-20">
                     <motion.div
                         initial={{ opacity: 0, x: -40 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -304,6 +306,7 @@ export default function SolutionHero() {
                         >
                             <Button 
                                 size="lg" 
+                                onClick={() => navigate("/contact")}
                                 className="h-14 px-8 text-base font-semibold rounded-2xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 group"
                             >
                                 Explore Solutions
@@ -312,6 +315,7 @@ export default function SolutionHero() {
                             <Button 
                                 size="lg" 
                                 variant="outline" 
+                                onClick={() => navigate("/contact")}
                                 className="h-14 px-8 text-base font-semibold rounded-2xl border-2 hover:bg-secondary/80 transition-all duration-300"
                             >
                                 Talk to Expert

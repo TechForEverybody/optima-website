@@ -1,5 +1,5 @@
 import { motion } from "motion/react"
-import { AlertTriangle, RefreshCcw, FileWarning, Database, BarChart3, ArrowRight } from "lucide-react"
+import { AlertTriangle, RefreshCcw, FileWarning, Database, BarChart3 } from "lucide-react"
 
 type Props = {}
 
@@ -33,7 +33,7 @@ const challenges = [
 
 export default function BusinessChallenges({ }: Props) {
     return (
-        <section className="relative py-24 lg:py-32 bg-gradient-to-b from-background via-secondary/20 to-background overflow-hidden">
+        <section className="relative py-5 lg:py-5 bg-gradient-to-b from-background via-secondary/20 to-background overflow-hidden">
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <svg className="absolute top-0 left-0 w-full h-full opacity-[0.03] dark:opacity-[0.02]" viewBox="0 0 100 100" preserveAspectRatio="none">
                     <defs>
@@ -136,11 +136,6 @@ export default function BusinessChallenges({ }: Props) {
                                                 {challenge.description}
                                             </p>
                                         </div>
-
-                                        <div className="relative flex-shrink-0 w-8 h-8 rounded-full border border-border group-hover:border-destructive/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0">
-                                            <ArrowRight className="w-4 h-4 text-destructive" />
-                                        </div>
-                                        
                                         <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 bg-destructive rounded-r-full group-hover:h-8 transition-all duration-300" />
                                     </div>
                                 </motion.div>

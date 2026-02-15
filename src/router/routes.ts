@@ -10,6 +10,8 @@ import DapDataQualityPage from '@/pages/dap-data-quality'
 import ResourcesPage from '@/pages/resources'
 import PartnersPage from '@/pages/partners'
 import AboutPage from '@/pages/about'
+import ContactPage from '@/pages/contact'
+import NotFound from '@/pages/NotFound'
 
 export const routes = [
     {
@@ -72,4 +74,14 @@ export const routes = [
         name: 'About',
         component: AboutPage
     },
+    {
+        path:"/contact",
+        name:"Contact",
+        component: ContactPage
+    },
+    {
+        path:"*",
+        redirect:"/not-found",
+        component:NotFound
+    }
 ]

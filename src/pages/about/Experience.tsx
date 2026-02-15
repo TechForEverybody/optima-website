@@ -24,6 +24,7 @@ import {
     ArrowUpRight
 } from "lucide-react"
 import { ScrollVelocity } from "@/components/ScrollVelocity"
+import { useNavigate } from "react-router-dom"
 import { useTheme } from "@/providers/theme-provider"
 
 type Props = {}
@@ -74,6 +75,7 @@ const values = [
 ]
 
 export default function Experience({}: Props) {
+    const navigate = useNavigate()
     const { theme } = useTheme()
     const isDark = theme === "dark" ||
         (theme === "system" && typeof window !== "undefined" &&
@@ -384,6 +386,7 @@ export default function Experience({}: Props) {
                                         whileHover={{ scale: 1.03, y: -2 }}
                                         whileTap={{ scale: 0.98 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                                        onClick={() => navigate("/contact")}
                                         className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-primary-foreground text-primary font-semibold text-[15px] shadow-lg shadow-black/10 hover:shadow-xl transition-shadow duration-300 cursor-pointer"
                                     >
                                         <MessageSquare className="w-4 h-4" />
@@ -395,6 +398,7 @@ export default function Experience({}: Props) {
                                         whileHover={{ scale: 1.03, y: -2 }}
                                         whileTap={{ scale: 0.98 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                                        onClick={() => navigate("/contact")}
                                         className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-primary-foreground/10 text-primary-foreground font-semibold text-[15px] ring-1 ring-primary-foreground/25 hover:bg-primary-foreground/15 hover:ring-primary-foreground/40 transition-all duration-300 cursor-pointer"
                                     >
                                         <ClipboardCheck className="w-4 h-4" />

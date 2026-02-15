@@ -18,28 +18,22 @@ import { cn } from '@/lib/utils'
 
 const footerLinks = {
     solutions: [
-        { name: 'Data Integration', href: '/solutions/data-integration' },
-        { name: 'Data Analytics', href: '/solutions/data-analytics' },
-        { name: 'Data Governance', href: '/solutions/data-governance' },
-        { name: 'Data Migration', href: '/solutions/data-migration' },
+        { name: 'Data Quality Assessment', href: '/solutions/data-quality-assessment' },
+        { name: 'Data Quality Monitoring', href: '/solutions/data-quality-monitoring' },
+        { name: 'Data Issue Remediation', href: '/solutions/data-issue-remediation' },
+        { name: 'Data Governance Enablement', href: '/solutions/data-governance-enablement' },
     ],
     company: [
         { name: 'About Us', href: '/about' },
         { name: 'Partners', href: '/partners' },
         { name: 'Resources', href: '/resources' },
-        { name: 'Careers', href: '/careers' },
+        { name: 'Contact', href: '/contact' },
     ],
     services: [
         { name: 'Platform', href: '/platform' },
         { name: 'Industry Sectors', href: '/industry-sectors' },
         { name: 'SAP Data Quality', href: '/dap-data-quality' },
-        { name: 'Consulting', href: '/consulting' },
-    ],
-    legal: [
-        { name: 'Privacy Policy', href: '/privacy' },
-        { name: 'Terms of Service', href: '/terms' },
-        { name: 'Cookie Policy', href: '/cookies' },
-        { name: 'Sitemap', href: '/sitemap' },
+        { name: 'Solutions Overview', href: '/solutions' },
     ],
 }
 
@@ -146,7 +140,7 @@ function Footer() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: 0.2 }}
-                                className="grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-6"
+                                className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6"
                             >
                                 <div>
                                     <h3 className="text-sm font-semibold text-foreground">Solutions</h3>
@@ -199,22 +193,7 @@ function Footer() {
                                     </ul>
                                 </div>
 
-                                <div>
-                                    <h3 className="text-sm font-semibold text-foreground">Legal</h3>
-                                    <ul className="mt-4 space-y-3">
-                                        {footerLinks.legal.map((link) => (
-                                            <li key={link.name}>
-                                                <Link
-                                                    to={link.href}
-                                                    className="group flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
-                                                >
-                                                    {/* <ArrowRight className="mr-1 h-3 w-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" /> */}
-                                                    <span>{link.name}</span>
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
+
                             </motion.div>
                         </div>
 
@@ -278,22 +257,16 @@ function Footer() {
                         </p>
                         <div className="flex items-center gap-6">
                             <Link
-                                to="/privacy"
+                                to="/about"
                                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
                             >
-                                Privacy
+                                About
                             </Link>
                             <Link
-                                to="/terms"
+                                to="/contact"
                                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
                             >
-                                Terms
-                            </Link>
-                            <Link
-                                to="/cookies"
-                                className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                            >
-                                Cookies
+                                Contact
                             </Link>
                         </div>
                     </motion.div>

@@ -1,5 +1,6 @@
 import { motion } from "motion/react"
 import { useRef, useMemo } from "react"
+import { useNavigate } from "react-router-dom"
 import { 
     Search, 
     ArrowRight, 
@@ -101,6 +102,7 @@ const outcomes = [
 type Props = {}
 
 function DataQualityAssessmentPage({}: Props) {
+    const navigate = useNavigate()
     const containerRef = useRef<HTMLElement>(null)
     const { theme } = useTheme()
 
@@ -181,6 +183,7 @@ function DataQualityAssessmentPage({}: Props) {
                             >
                                 <Button 
                                     size="lg" 
+                                    onClick={() => navigate("/contact")}
                                     className="h-14 px-8 text-base font-semibold rounded-2xl bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 group"
                                 >
                                     Start Assessment
@@ -189,6 +192,7 @@ function DataQualityAssessmentPage({}: Props) {
                                 <Button 
                                     size="lg" 
                                     variant="outline" 
+                                    onClick={() => navigate("/contact")}
                                     className="h-14 px-8 text-base font-semibold rounded-2xl border-2 hover:bg-secondary/80 transition-all duration-300"
                                 >
                                     View Sample Report
@@ -503,6 +507,7 @@ function DataQualityAssessmentPage({}: Props) {
                                 >
                                     <Button 
                                         size="lg" 
+                                        onClick={() => navigate("/contact")}
                                         className="h-14 px-8 text-base font-semibold rounded-2xl bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 group"
                                     >
                                         Request Assessment
@@ -511,6 +516,7 @@ function DataQualityAssessmentPage({}: Props) {
                                     <Button 
                                         size="lg" 
                                         variant="outline" 
+                                        onClick={() => navigate("/contact")}
                                         className="h-14 px-8 text-base font-semibold rounded-2xl border-2 hover:bg-secondary/80 transition-all duration-300 group"
                                     >
                                         <MessageSquare className="mr-2 h-5 w-5" />

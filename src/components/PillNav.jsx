@@ -6,6 +6,7 @@ import './PillNav.css';
 const PillNav = ({
   logo,
   logoAlt = 'Logo',
+  logoHref = '/',
   items,
   activeHref,
   className = '',
@@ -15,7 +16,8 @@ const PillNav = ({
   hoveredPillTextColor = '#060010',
   pillTextColor,
   onMobileMenuClick,
-  initialLoadAnimation = true
+  initialLoadAnimation = true,
+  rightSlot = null
 }) => {
   const resolvedPillTextColor = pillTextColor ?? baseColor;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -225,10 +227,10 @@ const PillNav = ({
   return (
     <div className="pill-nav-container">
       <nav className={`pill-nav ${className}`} aria-label="Primary" style={cssVars}>
-        {isRouterLink(items?.[0]?.href) ? (
+        {isRouterLink(logoHref) ? (
           <Link
             className="pill-logo"
-            to={items[0].href}
+            to={logoHref}
             aria-label="Home"
             onMouseEnter={handleLogoEnter}
             role="menuitem"
@@ -241,7 +243,7 @@ const PillNav = ({
         ) : (
           <a
             className="pill-logo"
-            href={items?.[0]?.href || '#'}
+            href={logoHref}
             aria-label="Home"
             onMouseEnter={handleLogoEnter}
             ref={el => {
@@ -307,6 +309,8 @@ const PillNav = ({
             ))}
           </ul>
         </div>
+
+        {rightSlot && <div className="pill-right-slot">{rightSlot}</div>}
 
         <button
           className="mobile-menu-button mobile-only"

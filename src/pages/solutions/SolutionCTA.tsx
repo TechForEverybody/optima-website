@@ -1,8 +1,11 @@
 import { motion } from "motion/react"
+import { useNavigate } from "react-router-dom"
 import { ArrowRight, MessageSquare } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function SolutionCTA() {
+    const navigate = useNavigate()
+
     return (
         <section className="relative py-16 lg:py-24 bg-background overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-primary/3 via-transparent to-transparent" />
@@ -63,6 +66,7 @@ export default function SolutionCTA() {
                                 >
                                     <Button 
                                         size="lg" 
+                                        onClick={() => navigate("/contact")}
                                         className="h-14 px-8 text-base font-semibold rounded-2xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 group"
                                     >
                                         Start a Data Quality Assessment
@@ -71,6 +75,7 @@ export default function SolutionCTA() {
                                     <Button 
                                         size="lg" 
                                         variant="outline" 
+                                        onClick={() => navigate("/contact")}
                                         className="h-14 px-8 text-base font-semibold rounded-2xl border-2 hover:bg-secondary/80 transition-all duration-300 group"
                                     >
                                         <MessageSquare className="mr-2 h-5 w-5" />

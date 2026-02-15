@@ -7,7 +7,6 @@ import { useTheme } from "@/providers/theme-provider"
 import Aurora from "@/components/Aurora"
 import RotatingText from "@/components/RotatingText"
 import SplashCursor from "@/components/SplashCursor"
-import ClickSpark from "@/components/ClickSpark"
 import ShinyText from "@/components/ShinyText"
 import GradientText from "@/components/GradientText"
 

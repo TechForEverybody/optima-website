@@ -204,7 +204,7 @@ function HeroSection() {
       </div>
 
       <motion.div style={{ y, opacity }} className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 lg:px-12 w-full">
-        <div className="flex flex-col items-center justify-center py-24 lg:py-36">
+        <div className="flex flex-col items-center justify-center py-36 lg:py-36">
           <div className="max-w-4xl text-center">
             <motion.div
               initial={{ opacity: 0, y: 24 }}

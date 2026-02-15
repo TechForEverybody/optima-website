@@ -260,7 +260,7 @@ export default function Industries({}: Props) {
 
                 <motion.div
                     style={{ y: heroY }}
-                    className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 py-28 lg:py-36 w-full"
+                    className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 py-36 lg:py-36 w-full"
                 >
                     <div className="max-w-4xl">
                         <motion.div
@@ -349,7 +349,7 @@ export default function Industries({}: Props) {
             </div>
 
 
-            <div className="relative py-20 lg:py-28">
+            <div className="relative py-36 lg:py-28">
                 <div className="mx-auto max-w-5xl px-6 sm:px-8 lg:px-12">
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}

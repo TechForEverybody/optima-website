@@ -302,7 +302,7 @@ export default function HomeHero({ }: Props) {
 
                     <motion.div
                         style={{ y: heroY, opacity: heroOpacity, scale: heroScale }}
-                        className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 flex flex-col items-center justify-center min-h-screen pt-24 md:pt-36"
+                        className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 flex flex-col items-center justify-center min-h-screen pt-36 "
                     >
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}

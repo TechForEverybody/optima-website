@@ -122,7 +122,7 @@ export default function Resources({ }: Props) {
                     />
                 </div>
 
-                <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 py-28 lg:py-36 w-full">
+                <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 py-36 lg:py-36 w-full">
                     <div className="max-w-3xl">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}

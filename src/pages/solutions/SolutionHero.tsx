@@ -230,7 +230,7 @@ export default function SolutionHero() {
     }, [theme])
 
     return (
-        <section ref={containerRef} className="relative  w-full overflow-hidden bg-background py-0 lg:py-16">
+        <section ref={containerRef} className="relative  w-full overflow-hidden bg-background py-12 lg:py-16">
             <div className="absolute inset-0 z-0">
                 <Particles
                     key={theme}

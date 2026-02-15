@@ -85,7 +85,7 @@ export default function Partners({}: Props) {
                     <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-background to-transparent" />
                 </div>
 
-                <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 py-24">
+                <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 py-36">
                     <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
                         <div className="lg:col-span-7">
                             <motion.div
@@ -191,7 +191,7 @@ export default function Partners({}: Props) {
                 </div>
             </div>
 
-            <div className="relative py-20 lg:py-28">
+            <div className="relative py-12 lg:py-28">
                 <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
                     <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
                         <motion.div

@@ -77,7 +77,7 @@ const capabilities = [
 
 export default function PlatformApproach({}: Props) {
     return (
-        <section className="relative py-24 lg:py-36 bg-background overflow-hidden">
+        <section className="relative py-36 lg:py-36 bg-background overflow-hidden">
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-0 left-1/4 w-150 h-150 bg-primary/5 dark:bg-primary/3 rounded-full blur-[120px]" />
                 <div className="absolute bottom-0 right-1/4 w-125 h-125 bg-accent/5 dark:bg-accent/3 rounded-full blur-[100px]" />

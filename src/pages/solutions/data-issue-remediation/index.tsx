@@ -4,99 +4,117 @@ import { useNavigate } from "react-router-dom"
 import { 
     Wrench, 
     ArrowRight, 
-    CheckCircle2, 
     Users,
-    GitBranch,
     ClipboardList,
     UserCheck,
-    TrendingUp,
-    Clock,
-    Lightbulb,
     MessageSquare,
     Workflow,
-    BarChart3,
     Target,
-    RefreshCw
+    RefreshCw,
+    AlertTriangle,
+    Search,
+    CheckSquare,
+    Eye,
+    BarChart3,
+    Calendar,
+    ShieldCheck
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "@/providers/theme-provider"
 import MainWebsiteLayout from "@/layout/MainWebsiteLayout"
 import Particles from "@/components/Particles"
 
-const whyPoints = [
-    {
-        icon: GitBranch,
-        title: "Finding vs. Fixing Gap",
-        description: "Many organizations excel at identifying data issues but struggle to translate findings into systematic remediation actions."
-    },
-    {
-        icon: UserCheck,
-        title: "Accountability Vacuum",
-        description: "Without clear ownership, issues persist indefinitely. Remediation stalls when nobody is responsible for resolution."
-    },
-    {
-        icon: Clock,
-        title: "Resolution Delays",
-        description: "Ad-hoc approaches lead to inconsistent follow-through, missed deadlines, and recurring problems."
-    }
+const challenges = [
+    "Data issues identified repeatedly across cycles",
+    "Lack of clarity on who owns specific data issues",
+    "Business teams unsure how or where to correct problems",
+    "IT teams fixing symptoms without addressing root causes",
+    "No formal closure or verification of resolved issues"
 ]
 
-const whatFeatures = [
+const enablements = [
+    "Assign clear accountability for data issues",
+    "Track issues from identification through closure",
+    "Ensure corrective actions address root causes",
+    "Prevent recurrence through process or control changes",
+    "Build confidence that reported improvements are real"
+]
+
+const remediationAreas = [
     {
-        icon: Workflow,
-        title: "Issue Workflow Management",
-        description: "Structured workflows that guide issues from identification through resolution with status tracking at every stage.",
+        icon: AlertTriangle,
+        title: "High-Impact Data Issues",
+        description: "Issues that affect critical reports, operational processes, compliance, or decision-making.",
         highlight: true
     },
     {
+        icon: RefreshCw,
+        title: "Recurring and Systemic Issues",
+        description: "Problems that reappear across cycles, indicating underlying process or control gaps."
+    },
+    {
         icon: Users,
-        title: "Ownership Assignment",
-        description: "Clear assignment of data owners and stewards to each issue with escalation paths when needed."
+        title: "Cross-Functional Data Issues",
+        description: "Issues spanning multiple teams or systems, requiring coordinated resolution."
     },
     {
-        icon: BarChart3,
-        title: "Progress Tracking",
-        description: "Real-time visibility into remediation progress with aging reports and resolution metrics."
+        icon: ShieldCheck,
+        title: "Control Failures and Process Gaps",
+        description: "Data issues resulting from missing, ineffective, or bypassed controls."
     },
     {
-        icon: Target,
-        title: "Resolution Analytics",
-        description: "Pattern analysis identifying recurring issues, root cause trends, and improvement opportunities."
+        icon: Search,
+        title: "Root Cause Categories",
+        description: "Classification of issues by cause -- process, system, integration, manual intervention, or ownership gaps."
     }
 ]
 
-const howSteps = [
+const implementationSteps = [
     {
         step: "01",
-        title: "Define Workflows",
-        description: "Design remediation workflows aligned with your organization structure, approval processes, and escalation needs.",
-        duration: "Week 1-2"
+        icon: UserCheck,
+        title: "Ownership Model Definition",
+        description: "Define and agree on data ownership at domain, object, and issue levels, aligned with business roles."
     },
     {
         step: "02",
-        title: "Assign Ownership",
-        description: "Map data owners and stewards to domains, establish RACI matrices, and define escalation triggers.",
-        duration: "Week 2-3"
+        icon: ClipboardList,
+        title: "Issue Classification & Prioritization",
+        description: "Categorize issues based on impact, urgency, recurrence, and risk."
     },
     {
         step: "03",
-        title: "Configure Tracking",
-        description: "Set up issue logging, progress tracking, SLA management, and reporting dashboards.",
-        duration: "Week 3-4"
+        icon: Workflow,
+        title: "Remediation Workflow Design",
+        description: "Establish workflows for issue assignment, analysis, correction, verification, and closure."
     },
     {
         step: "04",
-        title: "Enable & Train",
-        description: "Roll out to teams, conduct training, establish review cadences, and integrate with existing processes.",
-        duration: "Week 4-5"
+        icon: Search,
+        title: "Root Cause Analysis & Corrective Action",
+        description: "Ensure remediation addresses underlying causes through process or control improvements."
+    },
+    {
+        step: "05",
+        icon: CheckSquare,
+        title: "Verification & Closure",
+        description: "Validate resolution effectiveness and formally close issues with traceability."
     }
 ]
 
-const outcomes = [
-    { metric: "Faster Resolution", description: "Structured workflows accelerate issue closure" },
-    { metric: "Clear Accountability", description: "Every issue has a designated owner" },
-    { metric: "Systematic Fixes", description: "Consistent approach prevents recurrence" },
-    { metric: "Visibility", description: "Full transparency into remediation status" }
+const visibilityItems = [
+    { icon: BarChart3, label: "Status tracking of open, in-progress, and closed issues" },
+    { icon: Eye, label: "Clear ownership and accountability visibility" },
+    { icon: RefreshCw, label: "Aging and recurrence analysis" },
+    { icon: Target, label: "Insights into systemic problem areas" },
+    { icon: ShieldCheck, label: "Inputs for audit, compliance, and governance reviews" }
+]
+
+const engagementModel = [
+    { label: "Initiation", value: "Following assessment or continuous monitoring" },
+    { label: "Scope", value: "Focused on high-impact and recurring issues" },
+    { label: "Cadence", value: "Regular remediation and review cycles" },
+    { label: "Outcome", value: "Reduced recurrence, clearer ownership, and sustained improvement" }
 ]
 
 type Props = {}
@@ -116,7 +134,7 @@ function DataIssueRemediationPage({}: Props) {
 
     return (
         <MainWebsiteLayout>
-            <section ref={containerRef} className="relative min-h-[70vh] w-full overflow-hidden bg-background py-16 lg:py-24">
+            <section ref={containerRef} className="relative min-h-[70vh] w-full overflow-hidden bg-background py-36 lg:py-36">
                 <div className="absolute inset-0 z-0">
                     <Particles
                         key={theme}
@@ -149,7 +167,7 @@ function DataIssueRemediationPage({}: Props) {
                                 className="inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/5 backdrop-blur-sm px-4 py-2 mb-6"
                             >
                                 <Wrench className="h-4 w-4 text-amber-500" />
-                                <span className="text-sm font-medium text-amber-600 dark:text-amber-400">Stage 3: Remediate</span>
+                                <span className="text-sm font-medium text-amber-600 dark:text-amber-400">Remediation & Ownership</span>
                             </motion.div>
 
                             <motion.h1
@@ -169,10 +187,21 @@ function DataIssueRemediationPage({}: Props) {
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.3 }}
-                                className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl"
+                                className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-4 max-w-xl"
                             >
-                                Bridge the gap between finding and fixing. Transform identified issues into structured 
-                                remediation actions with clear ownership, workflows, and accountability.
+                                Ensure data issues are resolved with accountability -- not repeatedly rediscovered.
+                            </motion.p>
+
+                            <motion.p
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.35 }}
+                                className="text-base text-muted-foreground/80 leading-relaxed mb-8 max-w-xl"
+                            >
+                                Many organizations can identify data quality issues, but far fewer can ensure they are 
+                                systematically resolved, owned, and prevented from recurring. Without clear ownership and 
+                                structured remediation, data issues tend to resurface -- creating operational inefficiencies, 
+                                audit observations, and loss of confidence.
                             </motion.p>
 
                             <motion.div
@@ -186,16 +215,17 @@ function DataIssueRemediationPage({}: Props) {
                                     onClick={() => navigate("/contact")}
                                     className="h-14 px-8 text-base font-semibold rounded-2xl bg-amber-600 hover:bg-amber-700 shadow-lg shadow-amber-500/25 hover:shadow-xl hover:shadow-amber-500/30 transition-all duration-300 group"
                                 >
-                                    Start Remediation
+                                    Start a Data Quality Assessment
                                     <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                                 </Button>
                                 <Button 
                                     size="lg" 
                                     variant="outline" 
                                     onClick={() => navigate("/contact")}
-                                    className="h-14 px-8 text-base font-semibold rounded-2xl border-2 hover:bg-secondary/80 transition-all duration-300"
+                                    className="h-14 px-8 text-base font-semibold rounded-2xl border-2 hover:bg-secondary/80 transition-all duration-300 group"
                                 >
-                                    View Workflow Demo
+                                    <MessageSquare className="mr-2 h-5 w-5" />
+                                    Schedule a Discussion
                                 </Button>
                             </motion.div>
                         </motion.div>
@@ -216,17 +246,17 @@ function DataIssueRemediationPage({}: Props) {
                                             <ClipboardList className="h-6 w-6 text-amber-500" />
                                         </div>
                                         <div>
-                                            <div className="text-sm text-muted-foreground">Remediation Pipeline</div>
-                                            <div className="text-xl font-bold text-foreground">Active Tracking</div>
+                                            <div className="text-sm text-muted-foreground">Remediation Lifecycle</div>
+                                            <div className="text-xl font-bold text-foreground">Structured Resolution</div>
                                         </div>
                                     </div>
                                     
                                     <div className="space-y-3">
                                         {[
-                                            { status: "Open", count: 12, color: "bg-red-500" },
-                                            { status: "In Progress", count: 8, color: "bg-amber-500" },
-                                            { status: "Under Review", count: 5, color: "bg-blue-500" },
-                                            { status: "Resolved", count: 47, color: "bg-emerald-500" }
+                                            { label: "Identify & Classify", icon: Search, color: "text-red-500", bg: "bg-red-500/10" },
+                                            { label: "Assign Ownership", icon: UserCheck, color: "text-amber-500", bg: "bg-amber-500/10" },
+                                            { label: "Root Cause Analysis", icon: Target, color: "text-blue-500", bg: "bg-blue-500/10" },
+                                            { label: "Correct & Verify", icon: CheckSquare, color: "text-emerald-500", bg: "bg-emerald-500/10" }
                                         ].map((item, idx) => (
                                             <motion.div
                                                 key={idx}
@@ -235,18 +265,22 @@ function DataIssueRemediationPage({}: Props) {
                                                 transition={{ delay: 0.6 + idx * 0.1 }}
                                                 className="flex items-center gap-4"
                                             >
-                                                <div className={`w-2 h-8 rounded-full ${item.color}`} />
-                                                <div className="flex-1 flex items-center justify-between p-3 rounded-xl bg-background/50 border border-border/50">
-                                                    <span className="text-sm text-muted-foreground">{item.status}</span>
-                                                    <span className="text-lg font-semibold text-foreground">{item.count}</span>
+                                                <div className={`w-8 h-8 rounded-lg ${item.bg} flex items-center justify-center shrink-0`}>
+                                                    <item.icon className={`h-4 w-4 ${item.color}`} />
                                                 </div>
+                                                <div className="flex-1 p-3 rounded-xl bg-background/50 border border-border/50">
+                                                    <span className="text-sm font-medium text-foreground">{item.label}</span>
+                                                </div>
+                                                {idx < 3 && (
+                                                    <ArrowRight className="h-4 w-4 text-muted-foreground/40 rotate-90 lg:hidden" />
+                                                )}
                                             </motion.div>
                                         ))}
                                     </div>
                                     
-                                    <div className="pt-4 border-t border-border/50 flex items-center justify-between">
-                                        <span className="text-sm text-muted-foreground">Avg. Resolution Time</span>
-                                        <span className="text-lg font-semibold text-amber-500">4.2 days</span>
+                                    <div className="pt-4 border-t border-border/50 flex items-center gap-3">
+                                        <RefreshCw className="h-4 w-4 text-amber-500" />
+                                        <span className="text-sm text-muted-foreground">Continuous refinement to prevent recurrence</span>
                                     </div>
                                 </div>
                             </div>
@@ -265,34 +299,67 @@ function DataIssueRemediationPage({}: Props) {
                         className="text-center mb-16"
                     >
                         <span className="inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/5 px-4 py-2 text-sm font-medium text-amber-600 dark:text-amber-400 mb-4">
-                            <Lightbulb className="h-4 w-4" />
-                            Why Structured Remediation
+                            <AlertTriangle className="h-4 w-4" />
+                            Why It Matters
                         </span>
                         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                            Close the Gap Between Finding and Fixing
+                            Why Remediation and Ownership Matter
                         </h2>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Assessment and monitoring are valuable only when they drive actual improvement.
+                            Detection without ownership leads to repetition. Common challenges include:
                         </p>
                     </motion.div>
 
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {whyPoints.map((point, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.15 }}
-                                className="group relative p-8 rounded-3xl bg-card/50 border border-border/50 hover:border-amber-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/10"
-                            >
-                                <div className="w-14 h-14 rounded-2xl bg-amber-500/10 flex items-center justify-center mb-6 group-hover:bg-amber-500/20 transition-colors">
-                                    <point.icon className="h-7 w-7 text-amber-500" />
-                                </div>
-                                <h3 className="text-xl font-semibold text-foreground mb-3">{point.title}</h3>
-                                <p className="text-muted-foreground leading-relaxed">{point.description}</p>
-                            </motion.div>
-                        ))}
+                    <div className="grid lg:grid-cols-2 gap-12 items-start">
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="space-y-4"
+                        >
+                            <h3 className="text-xl font-semibold text-foreground mb-6">Common Challenges</h3>
+                            {challenges.map((challenge, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                                    className="flex items-start gap-4 p-4 rounded-2xl bg-red-500/5 border border-red-500/10"
+                                >
+                                    <div className="w-6 h-6 rounded-full bg-red-500/10 flex items-center justify-center shrink-0 mt-0.5">
+                                        <AlertTriangle className="h-3.5 w-3.5 text-red-500" />
+                                    </div>
+                                    <p className="text-muted-foreground">{challenge}</p>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="space-y-4"
+                        >
+                            <h3 className="text-xl font-semibold text-foreground mb-6">What This Solution Enables</h3>
+                            {enablements.map((item, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                                    className="flex items-start gap-4 p-4 rounded-2xl bg-amber-500/5 border border-amber-500/10"
+                                >
+                                    <div className="w-6 h-6 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0 mt-0.5">
+                                        <CheckSquare className="h-3.5 w-3.5 text-amber-500" />
+                                    </div>
+                                    <p className="text-muted-foreground">{item}</p>
+                                </motion.div>
+                            ))}
+                        </motion.div>
                     </div>
                 </div>
             </section>
@@ -307,19 +374,19 @@ function DataIssueRemediationPage({}: Props) {
                         className="text-center mb-16"
                     >
                         <span className="inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/5 px-4 py-2 text-sm font-medium text-amber-600 dark:text-amber-400 mb-4">
-                            <RefreshCw className="h-4 w-4" />
-                            What We Deliver
+                            <Target className="h-4 w-4" />
+                            What We Remediate
                         </span>
                         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                            Remediation Capabilities
+                            What We Remediate and Govern
                         </h2>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Systematic approach to issue resolution with complete visibility.
+                            Focused remediation on the issues that matter most to your organization.
                         </p>
                     </motion.div>
 
-                    <div className="grid md:grid-cols-2 gap-6">
-                        {whatFeatures.map((feature, index) => (
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {remediationAreas.map((area, index) => (
                             <motion.div
                                 key={index}
                                 initial={{ opacity: 0, y: 30 }}
@@ -327,22 +394,21 @@ function DataIssueRemediationPage({}: Props) {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                 className={`group relative p-8 rounded-3xl border backdrop-blur-sm transition-all duration-300 hover:shadow-lg ${
-                                    feature.highlight 
-                                        ? 'bg-amber-500/5 border-amber-500/30 hover:border-amber-500/50 hover:shadow-amber-500/10' 
+                                    index === 0 
+                                        ? 'bg-amber-500/5 border-amber-500/30 hover:border-amber-500/50 hover:shadow-amber-500/10 md:col-span-2 lg:col-span-1' 
                                         : 'bg-card/50 border-border/50 hover:border-amber-500/30 hover:shadow-amber-500/10'
                                 }`}
                             >
-                                <div className="flex items-start gap-5">
-                                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 transition-colors ${
-                                        feature.highlight ? 'bg-amber-500/20' : 'bg-amber-500/10 group-hover:bg-amber-500/20'
+                                <div className="flex items-center gap-3 mb-4">
+                                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-colors ${
+                                        index === 0 ? 'bg-amber-500/20' : 'bg-amber-500/10 group-hover:bg-amber-500/20'
                                     }`}>
-                                        <feature.icon className="h-7 w-7 text-amber-500" />
+                                        <area.icon className="h-6 w-6 text-amber-500" />
                                     </div>
-                                    <div>
-                                        <h3 className="text-xl font-semibold text-foreground mb-2">{feature.title}</h3>
-                                        <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
-                                    </div>
+                                    <span className="text-sm font-medium text-amber-500/60">{String(index + 1).padStart(2, '0')}</span>
                                 </div>
+                                <h3 className="text-xl font-semibold text-foreground mb-3">{area.title}</h3>
+                                <p className="text-muted-foreground leading-relaxed text-sm">{area.description}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -360,13 +426,14 @@ function DataIssueRemediationPage({}: Props) {
                     >
                         <span className="inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/5 px-4 py-2 text-sm font-medium text-amber-600 dark:text-amber-400 mb-4">
                             <Workflow className="h-4 w-4" />
-                            How We Work
+                            How We Implement
                         </span>
                         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                            Implementation Approach
+                            Remediation & Ownership Implementation
                         </h2>
-                        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Typically deployed in 4-5 weeks, integrating with your existing processes.
+                        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                            A structured approach to establishing clear accountability, workflows, and sustainable 
+                            resolution mechanisms.
                         </p>
                     </motion.div>
 
@@ -374,7 +441,7 @@ function DataIssueRemediationPage({}: Props) {
                         <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-amber-500/50 via-amber-500/30 to-transparent -translate-x-1/2" />
                         
                         <div className="space-y-8 lg:space-y-12">
-                            {howSteps.map((step, index) => (
+                            {implementationSteps.map((step, index) => (
                                 <motion.div
                                     key={index}
                                     initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
@@ -388,9 +455,6 @@ function DataIssueRemediationPage({}: Props) {
                                     <div className={`flex-1 ${index % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}`}>
                                         <div className="inline-flex items-center gap-3 mb-4">
                                             <span className="text-4xl font-bold text-amber-500/30">{step.step}</span>
-                                            <div className="px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-sm font-medium">
-                                                {step.duration}
-                                            </div>
                                         </div>
                                         <h3 className="text-2xl font-semibold text-foreground mb-3">{step.title}</h3>
                                         <p className="text-muted-foreground leading-relaxed max-w-md mx-auto lg:mx-0">
@@ -403,7 +467,7 @@ function DataIssueRemediationPage({}: Props) {
                                             whileHover={{ scale: 1.1 }}
                                             className="w-16 h-16 rounded-full bg-background border-4 border-amber-500/30 flex items-center justify-center shadow-lg"
                                         >
-                                            <CheckCircle2 className="h-8 w-8 text-amber-500" />
+                                            <step.icon className="h-7 w-7 text-amber-500" />
                                         </motion.div>
                                     </div>
                                     
@@ -417,42 +481,68 @@ function DataIssueRemediationPage({}: Props) {
 
             <section className="py-16 lg:py-24 bg-muted/30">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="text-center mb-16"
-                    >
-                        <span className="inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/5 px-4 py-2 text-sm font-medium text-amber-600 dark:text-amber-400 mb-4">
-                            <TrendingUp className="h-4 w-4" />
-                            Business Outcomes
-                        </span>
-                        <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                            What You Achieve
-                        </h2>
-                        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Turn issue identification into systematic, accountable resolution.
-                        </p>
-                    </motion.div>
+                    <div className="grid lg:grid-cols-2 gap-12">
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                        >
+                            <span className="inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/5 px-4 py-2 text-sm font-medium text-amber-600 dark:text-amber-400 mb-6">
+                                <Eye className="h-4 w-4" />
+                                Visibility & Control
+                            </span>
+                            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-8">
+                                Full Transparency Into Remediation
+                            </h2>
+                            <div className="space-y-4">
+                                {visibilityItems.map((item, index) => (
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                                        className="flex items-center gap-4 p-4 rounded-2xl bg-card/50 border border-border/50 hover:border-amber-500/20 transition-colors"
+                                    >
+                                        <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center shrink-0">
+                                            <item.icon className="h-5 w-5 text-amber-500" />
+                                        </div>
+                                        <p className="text-muted-foreground">{item.label}</p>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </motion.div>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {outcomes.map((outcome, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className="group relative p-6 rounded-3xl bg-card/50 border border-border/50 hover:border-amber-500/30 transition-all duration-300 text-center"
-                            >
-                                <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-500/20 transition-colors">
-                                    <CheckCircle2 className="h-6 w-6 text-amber-500" />
-                                </div>
-                                <h3 className="text-lg font-semibold text-foreground mb-2">{outcome.metric}</h3>
-                                <p className="text-sm text-muted-foreground">{outcome.description}</p>
-                            </motion.div>
-                        ))}
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                        >
+                            <span className="inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/5 px-4 py-2 text-sm font-medium text-amber-600 dark:text-amber-400 mb-6">
+                                <Calendar className="h-4 w-4" />
+                                Engagement Model
+                            </span>
+                            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-8">
+                                How We Engage
+                            </h2>
+                            <div className="space-y-4">
+                                {engagementModel.map((item, index) => (
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, x: 20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                                        className="p-5 rounded-2xl bg-card/50 border border-border/50 hover:border-amber-500/20 transition-colors"
+                                    >
+                                        <div className="text-sm font-medium text-amber-600 dark:text-amber-400 mb-1">{item.label}</div>
+                                        <p className="text-muted-foreground">{item.value}</p>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
             </section>
@@ -478,7 +568,6 @@ function DataIssueRemediationPage({}: Props) {
                                     transition={{ duration: 0.5, delay: 0.2 }}
                                     className="inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/5 px-4 py-2 text-sm font-medium text-amber-600 dark:text-amber-400 mb-6"
                                 >
-                                    
                                     Get Started
                                 </motion.div>
 
@@ -489,9 +578,9 @@ function DataIssueRemediationPage({}: Props) {
                                     transition={{ duration: 0.5, delay: 0.3 }}
                                     className="text-3xl sm:text-4xl font-bold text-foreground mb-6"
                                 >
-                                    Start{" "}
+                                    Move from Recurring Issues to{" "}
                                     <span className="bg-linear-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
-                                        Fixing What Matters
+                                        Sustainable Resolution
                                     </span>
                                 </motion.h2>
 
@@ -502,8 +591,8 @@ function DataIssueRemediationPage({}: Props) {
                                     transition={{ duration: 0.5, delay: 0.4 }}
                                     className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto"
                                 >
-                                    Stop letting known issues persist. Let us help you establish systematic 
-                                    remediation with clear ownership and accountability.
+                                    Establish clear accountability, structured workflows, and sustainable resolution 
+                                    mechanisms -- ensuring that data quality improvements are real and lasting.
                                 </motion.p>
 
                                 <motion.div
@@ -518,7 +607,7 @@ function DataIssueRemediationPage({}: Props) {
                                         onClick={() => navigate("/contact")}
                                         className="h-14 px-8 text-base font-semibold rounded-2xl bg-amber-600 hover:bg-amber-700 shadow-lg shadow-amber-500/25 hover:shadow-xl hover:shadow-amber-500/30 transition-all duration-300 group"
                                     >
-                                        Enable Remediation
+                                        Start a Data Quality Assessment
                                         <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                                     </Button>
                                     <Button 
@@ -528,7 +617,7 @@ function DataIssueRemediationPage({}: Props) {
                                         className="h-14 px-8 text-base font-semibold rounded-2xl border-2 hover:bg-secondary/80 transition-all duration-300 group"
                                     >
                                         <MessageSquare className="mr-2 h-5 w-5" />
-                                        Schedule Discussion
+                                        Schedule a Discussion
                                     </Button>
                                 </motion.div>
                             </div>

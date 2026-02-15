@@ -5,18 +5,18 @@ import {
     Shield, 
     ArrowRight, 
     CheckCircle2, 
-    Building2,
     Users,
     FileText,
-    Award,
     TrendingUp,
     Network,
     Lightbulb,
     MessageSquare,
     Scale,
     Layers,
-    GraduationCap,
-    Target
+    Target,
+    RotateCcw,
+    AlertCircle,
+    BookOpen
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "@/providers/theme-provider"
@@ -25,86 +25,107 @@ import Particles from "@/components/Particles"
 
 const whyPoints = [
     {
-        icon: Network,
-        title: "Sustainability Gap",
-        description: "Point solutions and one-time fixes cannot sustain improvement. Organizations need an operating model that embeds quality into daily work."
+        icon: Users,
+        title: "Unclear Ownership",
+        description: "Data domains and objects lack defined owners, creating confusion about who is responsible for quality and decision-making."
+    },
+    {
+        icon: FileText,
+        title: "Inconsistent Definitions",
+        description: "Critical data elements are defined differently across teams, leading to conflicting reports and eroded trust."
+    },
+    {
+        icon: RotateCcw,
+        title: "Recurring Quality Issues",
+        description: "The same data quality problems resurface despite repeated remediation, signaling a lack of root-cause governance."
     },
     {
         icon: Scale,
-        title: "Scalability Challenge",
-        description: "As data volumes and sources grow, ad-hoc approaches break down. Governance provides the framework to scale quality management."
+        title: "Limited Accountability",
+        description: "No clear accountability across business functions means data issues persist without resolution or escalation."
     },
     {
-        icon: Building2,
-        title: "Organizational Capability",
-        description: "True data quality requires cultural change and capability building, not just tools and processes."
+        icon: AlertCircle,
+        title: "Paper-Only Governance",
+        description: "Governance frameworks exist in documentation but are never operationalized, leaving a gap between intent and action."
     }
 ]
 
 const whatFeatures = [
     {
-        icon: Users,
-        title: "Role-Based Governance Model",
-        description: "Clear definition of data owners, stewards, and custodians with responsibilities mapped to organizational structure.",
+        icon: Shield,
+        title: "Data Ownership & Stewardship Models",
+        description: "Clear definition of owners, stewards, and custodians with practical responsibilities aligned to organizational structure.",
         highlight: true
     },
     {
-        icon: FileText,
-        title: "Policy Framework Design",
-        description: "Business-aligned data quality policies, standards, and procedures that are practical and enforceable."
+        icon: BookOpen,
+        title: "Policies, Standards & Definitions",
+        description: "Common data definitions, quality standards, and policies for critical data elements that drive consistency across the enterprise."
     },
     {
-        icon: GraduationCap,
-        title: "Stewardship Enablement",
-        description: "Training, tools, and support structures that empower stewards to fulfill their responsibilities effectively."
+        icon: Network,
+        title: "Governance Operating Model",
+        description: "Forums, review cadences, escalation paths, and decision workflows that keep governance active and responsive."
     },
     {
-        icon: Award,
-        title: "Maturity Progression",
-        description: "Roadmap for advancing governance maturity with clear milestones and success metrics."
+        icon: Target,
+        title: "Metrics & Accountability",
+        description: "Data quality KPIs, thresholds, and accountability mechanisms that make governance measurable and enforceable."
+    },
+    {
+        icon: Layers,
+        title: "Integration with Operations",
+        description: "Embedding governance into monitoring, remediation, and business processes so it becomes part of daily work."
     }
 ]
 
 const howSteps = [
     {
         step: "01",
-        title: "Assess Current State",
-        description: "Evaluate existing governance structures, identify gaps, and understand organizational readiness for change.",
-        duration: "Week 1-2"
+        title: "Governance Scope & Prioritization",
+        description: "Identify critical domains and governance priorities based on business risk and impact.",
+        duration: "Phase 1"
     },
     {
         step: "02",
-        title: "Design Target Model",
-        description: "Define the governance operating model including roles, policies, processes, and decision rights.",
-        duration: "Week 2-4"
+        title: "Role & Responsibility Definition",
+        description: "Define ownership and accountability aligned to organizational structures and business functions.",
+        duration: "Phase 2"
     },
     {
         step: "03",
-        title: "Enable Stewardship",
-        description: "Establish stewardship network, provide training, and deploy supporting tools and processes.",
-        duration: "Week 4-6"
+        title: "Policy & Framework Design",
+        description: "Develop usable policies, standards, and decision frameworks that teams can adopt in practice.",
+        duration: "Phase 3"
     },
     {
         step: "04",
-        title: "Operationalize",
-        description: "Launch governance councils, establish review cadences, and integrate with business operations.",
-        duration: "Week 6-8"
+        title: "Integration with Monitoring & Remediation",
+        description: "Align governance with continuous monitoring and remediation workflows for operational continuity.",
+        duration: "Phase 4"
+    },
+    {
+        step: "05",
+        title: "Adoption & Maturity Building",
+        description: "Support adoption through training, communication, and iterative refinement toward governance maturity.",
+        duration: "Phase 5"
     }
 ]
 
 const outcomes = [
-    { metric: "Sustained Trust", description: "Long-term data quality improvement embedded in operations" },
-    { metric: "Scalable Model", description: "Framework that grows with your organization" },
-    { metric: "Clear Accountability", description: "Defined ownership across all data domains" },
-    { metric: "Organizational Capability", description: "Embedded competency for data quality management" }
+    { metric: "Initiation", description: "Following assessment, monitoring, or remediation" },
+    { metric: "Scope", description: "Phased by domain or business priority" },
+    { metric: "Cadence", description: "Regular governance cycles" },
+    { metric: "Outcome", description: "Sustained data quality, clearer ownership, stronger trust" }
 ]
 
-const maturityLevels = [
-    { level: 1, name: "Initial", description: "Ad-hoc, reactive" },
-    { level: 2, name: "Managed", description: "Defined processes" },
-    { level: 3, name: "Defined", description: "Standardized approach" },
-    { level: 4, name: "Measured", description: "Quantitative management" },
-    { level: 5, name: "Optimizing", description: "Continuous improvement" }
+const deliverables = [
+    { text: "Clear data ownership and stewardship models" },
+    { text: "Defined decision rights and escalation paths" },
+    { text: "Alignment of governance with business processes" },
+    { text: "Integration of governance into daily operations" },
+    { text: "Support for audit, compliance, and regulatory needs" }
 ]
 
 type Props = {}
@@ -124,7 +145,7 @@ function DataGovernanceEnablementPage({}: Props) {
 
     return (
         <MainWebsiteLayout>
-            <section ref={containerRef} className="relative min-h-[70vh] w-full overflow-hidden bg-background py-16 lg:py-24">
+            <section ref={containerRef} className="relative min-h-[70vh] w-full overflow-hidden bg-background py-36 lg:py-36">
                 <div className="absolute inset-0 z-0">
                     <Particles
                         key={theme}
@@ -178,8 +199,9 @@ function DataGovernanceEnablementPage({}: Props) {
                                 transition={{ duration: 0.8, delay: 0.3 }}
                                 className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl"
                             >
-                                Build lasting organizational capability for data quality. Establish the operating model, 
-                                roles, and decision mechanisms to sustain improvements at scale.
+                                Establish practical governance structures that sustain data quality and business trust.
+                                Define, operationalize, and sustain governance models that are pragmatic, scalable, 
+                                and aligned with business processes.
                             </motion.p>
 
                             <motion.div
@@ -200,9 +222,10 @@ function DataGovernanceEnablementPage({}: Props) {
                                     size="lg" 
                                     variant="outline" 
                                     onClick={() => navigate("/contact")}
-                                    className="h-14 px-8 text-base font-semibold rounded-2xl border-2 hover:bg-secondary/80 transition-all duration-300"
+                                    className="h-14 px-8 text-base font-semibold rounded-2xl border-2 hover:bg-secondary/80 transition-all duration-300 group"
                                 >
-                                    View Framework
+                                    <MessageSquare className="mr-2 h-5 w-5" />
+                                    Schedule a Discussion
                                 </Button>
                             </motion.div>
                         </motion.div>
@@ -220,53 +243,35 @@ function DataGovernanceEnablementPage({}: Props) {
                                 <div className="relative space-y-6">
                                     <div className="flex items-center gap-4 mb-6">
                                         <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center">
-                                            <Layers className="h-6 w-6 text-emerald-500" />
+                                            <Shield className="h-6 w-6 text-emerald-500" />
                                         </div>
                                         <div>
-                                            <div className="text-sm text-muted-foreground">Governance Maturity</div>
-                                            <div className="text-xl font-bold text-foreground">Progressive Journey</div>
+                                            <div className="text-sm text-muted-foreground">Key Deliverables</div>
+                                            <div className="text-xl font-bold text-foreground">What We Deliver</div>
                                         </div>
                                     </div>
                                     
                                     <div className="space-y-3">
-                                        {maturityLevels.map((item, idx) => (
+                                        {deliverables.map((item, idx) => (
                                             <motion.div
                                                 key={idx}
                                                 initial={{ opacity: 0, x: -20 }}
                                                 animate={{ opacity: 1, x: 0 }}
                                                 transition={{ delay: 0.6 + idx * 0.1 }}
-                                                className="flex items-center gap-4"
+                                                className="flex items-center gap-3"
                                             >
-                                                <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold ${
-                                                    idx <= 2 
-                                                        ? 'bg-emerald-500/20 text-emerald-500' 
-                                                        : 'bg-muted text-muted-foreground'
-                                                }`}>
-                                                    {item.level}
+                                                <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center shrink-0">
+                                                    <CheckCircle2 className="h-4 w-4 text-emerald-500" />
                                                 </div>
-                                                <div className="flex-1">
-                                                    <div className="text-sm font-medium text-foreground">{item.name}</div>
-                                                    <div className="text-xs text-muted-foreground">{item.description}</div>
-                                                </div>
-                                                {idx <= 2 && (
-                                                    <CheckCircle2 className="h-5 w-5 text-emerald-500" />
-                                                )}
+                                                <span className="text-sm font-medium text-foreground">{item.text}</span>
                                             </motion.div>
                                         ))}
                                     </div>
                                     
                                     <div className="pt-4 border-t border-border/50">
-                                        <div className="flex items-center justify-between">
-                                            <span className="text-sm text-muted-foreground">Current Maturity</span>
-                                            <span className="text-lg font-semibold text-emerald-500">Level 3</span>
-                                        </div>
-                                        <div className="mt-2 h-2 bg-muted rounded-full overflow-hidden">
-                                            <motion.div
-                                                initial={{ width: 0 }}
-                                                animate={{ width: "60%" }}
-                                                transition={{ delay: 1, duration: 1, ease: "easeOut" }}
-                                                className="h-full bg-linear-to-r from-emerald-500 to-teal-500 rounded-full"
-                                            />
+                                        <div className="flex items-center gap-2">
+                                            <Lightbulb className="h-4 w-4 text-emerald-500" />
+                                            <span className="text-sm text-muted-foreground">Pragmatic, scalable, and business-aligned</span>
                                         </div>
                                     </div>
                                 </div>
@@ -286,18 +291,18 @@ function DataGovernanceEnablementPage({}: Props) {
                         className="text-center mb-16"
                     >
                         <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-4 py-2 text-sm font-medium text-emerald-600 dark:text-emerald-400 mb-4">
-                            <Lightbulb className="h-4 w-4" />
-                            Why Governance Enablement
+                            <AlertCircle className="h-4 w-4" />
+                            The Challenge
                         </span>
                         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                            Sustain Improvements at Scale
+                            Why Data Governance Is Essential
                         </h2>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Without governance, quality improvements are temporary. Build the foundation for lasting change.
+                            Many organizations struggle to make governance work in practice. These challenges signal the need for a structured approach.
                         </p>
                     </motion.div>
 
-                    <div className="grid md:grid-cols-3 gap-8">
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         {whyPoints.map((point, index) => (
                             <motion.div
                                 key={index}
@@ -329,13 +334,13 @@ function DataGovernanceEnablementPage({}: Props) {
                     >
                         <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-4 py-2 text-sm font-medium text-emerald-600 dark:text-emerald-400 mb-4">
                             <Target className="h-4 w-4" />
-                            What We Deliver
+                            Capabilities
                         </span>
                         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                            Governance Capabilities
+                            What We Enable
                         </h2>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Comprehensive framework for sustainable data quality management.
+                            Comprehensive governance capabilities that bridge the gap between intent and action.
                         </p>
                     </motion.div>
 
@@ -381,13 +386,13 @@ function DataGovernanceEnablementPage({}: Props) {
                     >
                         <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-4 py-2 text-sm font-medium text-emerald-600 dark:text-emerald-400 mb-4">
                             <Scale className="h-4 w-4" />
-                            How We Work
+                            Our Approach
                         </span>
                         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                            Implementation Approach
+                            How We Enable Data Governance
                         </h2>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Typically deployed in 6-8 weeks, building sustainable governance capability.
+                            A phased approach from scoping through adoption, building sustainable governance capability.
                         </p>
                     </motion.div>
 
@@ -447,13 +452,13 @@ function DataGovernanceEnablementPage({}: Props) {
                     >
                         <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-4 py-2 text-sm font-medium text-emerald-600 dark:text-emerald-400 mb-4">
                             <TrendingUp className="h-4 w-4" />
-                            Business Outcomes
+                            Engagement Model
                         </span>
                         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                            What You Achieve
+                            How We Engage
                         </h2>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Build sustainable capability for long-term data quality excellence.
+                            A structured engagement model aligned to your organization's governance journey.
                         </p>
                     </motion.div>
 
@@ -500,7 +505,7 @@ function DataGovernanceEnablementPage({}: Props) {
                                     className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-4 py-2 text-sm font-medium text-emerald-600 dark:text-emerald-400 mb-6"
                                 >
                                     
-                                    Complete the Lifecycle
+                                    Take Action
                                 </motion.div>
 
                                 <motion.h2
@@ -510,9 +515,9 @@ function DataGovernanceEnablementPage({}: Props) {
                                     transition={{ duration: 0.5, delay: 0.3 }}
                                     className="text-3xl sm:text-4xl font-bold text-foreground mb-6"
                                 >
-                                    Build{" "}
+                                    Governance{" "}
                                     <span className="bg-linear-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">
-                                        Sustained Trust
+                                        In Action
                                     </span>
                                 </motion.h2>
 
@@ -523,8 +528,8 @@ function DataGovernanceEnablementPage({}: Props) {
                                     transition={{ duration: 0.5, delay: 0.4 }}
                                     className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto"
                                 >
-                                    Governance is the capstone of the data quality lifecycle. Let us help you 
-                                    build the sustainable operating model that ensures long-term success.
+                                    Move from governance intent to governance in action. Let us help you build 
+                                    practical, sustainable governance that drives lasting data quality.
                                 </motion.p>
 
                                 <motion.div
@@ -539,7 +544,7 @@ function DataGovernanceEnablementPage({}: Props) {
                                         onClick={() => navigate("/contact")}
                                         className="h-14 px-8 text-base font-semibold rounded-2xl bg-emerald-600 hover:bg-emerald-700 shadow-lg shadow-emerald-500/25 hover:shadow-xl hover:shadow-emerald-500/30 transition-all duration-300 group"
                                     >
-                                        Enable Governance
+                                        Start Assessment
                                         <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                                     </Button>
                                     <Button 
@@ -549,7 +554,7 @@ function DataGovernanceEnablementPage({}: Props) {
                                         className="h-14 px-8 text-base font-semibold rounded-2xl border-2 hover:bg-secondary/80 transition-all duration-300 group"
                                     >
                                         <MessageSquare className="mr-2 h-5 w-5" />
-                                        Schedule Discussion
+                                        Schedule a Discussion
                                     </Button>
                                 </motion.div>
                             </div>

@@ -45,9 +45,9 @@ const socialLinks = [
 ]
 
 const contactInfo = {
-    address: '123 Business Avenue, Suite 500, San Francisco, CA 94102, USA',
+    address: 'Navi Mumbai, Maharashtra, India',
     email: 'contact@valueassure.com',
-    phone: '+1 (555) 123-4567',
+    phone: '+91 98765 43210',
 }
 
 function Footer() {

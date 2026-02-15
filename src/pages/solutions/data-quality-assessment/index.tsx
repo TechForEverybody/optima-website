@@ -11,12 +11,13 @@ import {
     AlertTriangle,
     TrendingUp,
     Users,
-    Lightbulb,
     MessageSquare,
     Database,
     LineChart,
-    PieChart,
-    Layers
+    Layers,
+    Shield,
+    Settings,
+    Clock
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "@/providers/theme-provider"
@@ -25,78 +26,94 @@ import Particles from "@/components/Particles"
 
 const whyPoints = [
     {
-        icon: AlertTriangle,
-        title: "Uncertainty Costs",
-        description: "Data quality issues silently erode trust, delay decisions, and create operational inefficiencies across the organization."
+        icon: Database,
+        title: "ERP Transformation & Migration",
+        description: "SAP S/4HANA or ERP transformation and migration initiatives require a baseline understanding of data quality to mitigate transition risks."
     },
     {
-        icon: Target,
-        title: "Need for Clarity",
-        description: "Without a fact-based baseline, organizations struggle to prioritize investments and cannot measure improvement."
+        icon: BarChart3,
+        title: "Reporting Inconsistencies",
+        description: "Recurring reporting mismatches or reconciliation challenges that undermine confidence in business-critical information."
     },
     {
-        icon: Users,
-        title: "Stakeholder Alignment",
-        description: "Executive sponsors and business users need quantified evidence to justify data quality initiatives and allocate resources."
+        icon: Shield,
+        title: "Audit & Compliance Gaps",
+        description: "Audit findings, compliance gaps, or regulatory scrutiny that demand systematic identification and resolution of data issues."
+    },
+    {
+        icon: Settings,
+        title: "Manual Data Workarounds",
+        description: "High dependency on manual data corrections and workarounds that increase operational costs and introduce additional risk."
+    },
+    {
+        icon: LineChart,
+        title: "Eroding Business Confidence",
+        description: "Declining trust in dashboards, analytics, and KPIs that are essential for strategic and operational decisions."
     }
 ]
 
 const whatFeatures = [
     {
         icon: FileSearch,
-        title: "Comprehensive Profiling",
-        description: "Business-aligned data quality assessment across critical data domains, systems, and processes.",
+        title: "Data Accuracy, Completeness & Consistency",
+        description: "Evaluate whether critical data elements are accurate, complete, and consistent across systems, identifying missing values, invalid entries, duplicates, and misaligned master and transactional data.",
         highlight: true
     },
     {
-        icon: BarChart3,
-        title: "Root Cause Analysis",
-        description: "Systematic identification of data quality issues, their origins, and propagation patterns."
+        icon: Shield,
+        title: "Business Rule & Regulatory Compliance",
+        description: "Validate data against defined business rules, organizational policies, and regulatory requirements to ensure alignment with how the business expects information to be structured and used."
     },
     {
-        icon: LineChart,
-        title: "Impact Quantification",
-        description: "Business impact analysis connecting data quality issues to operational costs and revenue implications."
+        icon: Layers,
+        title: "Process & Integration Touchpoints",
+        description: "Analyze key business processes, system interfaces, and integration points where data is created, modified, or transferred to identify where quality issues are introduced."
     },
     {
-        icon: PieChart,
-        title: "Executive Dashboards",
-        description: "CXO-ready visualizations presenting findings in business terms with clear recommendations."
+        icon: Users,
+        title: "Data Ownership, Controls & Accountability",
+        description: "Assess how data ownership is defined and exercised across functions, including evaluation of preventive and detective controls and issue resolution mechanisms."
+    },
+    {
+        icon: Target,
+        title: "Risk, Impact & Materiality",
+        description: "Assess identified data issues for business impact, operational risk, compliance exposure, and decision-making implications to enable prioritization."
     }
 ]
 
 const howSteps = [
     {
         step: "01",
-        title: "Scope & Align",
-        description: "Define critical data domains and success criteria with business stakeholders to ensure assessment relevance.",
-        duration: "Week 1-2"
+        title: "Scope & Prioritization",
+        description: "Work with stakeholders to identify critical data objects, reports, and processes aligned to business priorities.",
+        duration: "Phase 1"
     },
     {
         step: "02",
-        title: "Profile & Measure",
-        description: "Execute comprehensive data profiling using industry-standard dimensions tailored to your business context.",
-        duration: "Week 2-4"
+        title: "Profiling & Validation",
+        description: "Profile and validate data to uncover quality patterns, anomalies, and areas of concern.",
+        duration: "Phase 2"
     },
     {
         step: "03",
-        title: "Analyze & Quantify",
-        description: "Perform root cause analysis and quantify business impact of identified issues.",
-        duration: "Week 4-5"
+        title: "Root Cause Analysis",
+        description: "Analyze findings to distinguish symptoms from underlying causes across data and processes.",
+        duration: "Phase 3"
     },
     {
         step: "04",
-        title: "Present & Roadmap",
-        description: "Deliver findings with prioritized recommendations and a clear path forward.",
-        duration: "Week 5-6"
+        title: "Risk & Impact Assessment",
+        description: "Map issues to business impact, compliance exposure, and operational risk to support prioritization.",
+        duration: "Phase 4"
     }
 ]
 
 const outcomes = [
-    { metric: "Clear Baseline", description: "Fact-based understanding of current data quality state" },
-    { metric: "Prioritized Gaps", description: "Issues ranked by business impact for focused remediation" },
-    { metric: "Stakeholder Buy-in", description: "Executive alignment through quantified evidence" },
-    { metric: "Action Roadmap", description: "Clear next steps with resource and effort estimates" }
+    { metric: "Executive Scorecards", description: "Data quality scorecards and summaries for leadership visibility" },
+    { metric: "Prioritized Issues", description: "Detailed list of data issues and root causes ranked by impact" },
+    { metric: "Impact Assessment", description: "Business and compliance impact analysis for each finding" },
+    { metric: "Remediation Plan", description: "Actionable recommendations for remediation and controls" },
+    { metric: "Governance Roadmap", description: "Roadmap for continuous monitoring and governance enablement" }
 ]
 
 type Props = {}
@@ -116,7 +133,7 @@ function DataQualityAssessmentPage({}: Props) {
 
     return (
         <MainWebsiteLayout>
-            <section ref={containerRef} className="relative min-h-[70vh] w-full overflow-hidden bg-background py-16 lg:py-24">
+            <section ref={containerRef} className="relative min-h-[70vh] w-full overflow-hidden bg-background py-36 lg:py-36">
                 <div className="absolute inset-0 z-0">
                     <Particles
                         key={theme}
@@ -171,8 +188,10 @@ function DataQualityAssessmentPage({}: Props) {
                                 transition={{ duration: 0.8, delay: 0.3 }}
                                 className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl"
                             >
-                                Move from anecdotal concerns to quantified insights. Establish a clear, 
-                                fact-based understanding of your data quality risks, root causes, and business impact.
+                                Establish a clear, objective, and fact-based understanding of data quality 
+                                risks across your enterprise. Move from assumptions and isolated fixes to 
+                                a prioritized understanding of where data issues originate, why they occur, 
+                                and how they impact business outcomes.
                             </motion.p>
 
                             <motion.div
@@ -193,9 +212,10 @@ function DataQualityAssessmentPage({}: Props) {
                                     size="lg" 
                                     variant="outline" 
                                     onClick={() => navigate("/contact")}
-                                    className="h-14 px-8 text-base font-semibold rounded-2xl border-2 hover:bg-secondary/80 transition-all duration-300"
+                                    className="h-14 px-8 text-base font-semibold rounded-2xl border-2 hover:bg-secondary/80 transition-all duration-300 group"
                                 >
-                                    View Sample Report
+                                    <MessageSquare className="mr-2 h-5 w-5" />
+                                    Schedule a Discussion
                                 </Button>
                             </motion.div>
                         </motion.div>
@@ -216,17 +236,17 @@ function DataQualityAssessmentPage({}: Props) {
                                             <Database className="h-6 w-6 text-blue-500" />
                                         </div>
                                         <div>
-                                            <div className="text-sm text-muted-foreground">Assessment Coverage</div>
-                                            <div className="text-2xl font-bold text-foreground">360 View</div>
+                                            <div className="text-sm text-muted-foreground">Assessment Scope</div>
+                                            <div className="text-2xl font-bold text-foreground">Enterprise-wide</div>
                                         </div>
                                     </div>
                                     
                                     <div className="grid grid-cols-2 gap-4">
                                         {[
-                                            { label: "Data Domains", value: "Critical" },
-                                            { label: "Quality Dimensions", value: "6 Core" },
-                                            { label: "Root Causes", value: "Mapped" },
-                                            { label: "Business Impact", value: "Quantified" }
+                                            { label: "Duration", value: "2-4 Weeks" },
+                                            { label: "Coverage", value: "5 Dimensions" },
+                                            { label: "Root Causes", value: "Analyzed" },
+                                            { label: "Delivery", value: "Structured" }
                                         ].map((item, idx) => (
                                             <motion.div
                                                 key={idx}
@@ -257,14 +277,14 @@ function DataQualityAssessmentPage({}: Props) {
                         className="text-center mb-16"
                     >
                         <span className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-2 text-sm font-medium text-blue-600 dark:text-blue-400 mb-4">
-                            <Lightbulb className="h-4 w-4" />
-                            Why Assessment Matters
+                            <AlertTriangle className="h-4 w-4" />
+                            When to Consider
                         </span>
                         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                            The Foundation of Data Trust
+                            When This Solution Is Needed
                         </h2>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Without a clear understanding of current state, improvement efforts lack direction and credibility.
+                            This solution is particularly valuable when data quality concerns are acknowledged but not clearly understood, and symptoms remain unresolved despite corrective efforts.
                         </p>
                     </motion.div>
 
@@ -286,6 +306,16 @@ function DataQualityAssessmentPage({}: Props) {
                             </motion.div>
                         ))}
                     </div>
+
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                        className="text-center text-muted-foreground leading-relaxed mt-12 max-w-3xl mx-auto text-base"
+                    >
+                        In many cases, organizations attempt corrective actions without a holistic assessment. Without understanding systemic root causes, data issues tend to resurface repeatedly.
+                    </motion.p>
                 </div>
             </section>
 
@@ -300,13 +330,13 @@ function DataQualityAssessmentPage({}: Props) {
                     >
                         <span className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-2 text-sm font-medium text-blue-600 dark:text-blue-400 mb-4">
                             <Layers className="h-4 w-4" />
-                            What We Deliver
+                            What We Assess
                         </span>
                         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                            Comprehensive Assessment Capabilities
+                            What We Assess
                         </h2>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            A systematic approach to understanding your data quality landscape.
+                            Our assessment covers data, processes, and ownership holistically, ensuring that findings are actionable and business-relevant.
                         </p>
                     </motion.div>
 
@@ -352,13 +382,13 @@ function DataQualityAssessmentPage({}: Props) {
                     >
                         <span className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-2 text-sm font-medium text-blue-600 dark:text-blue-400 mb-4">
                             <Target className="h-4 w-4" />
-                            How We Work
+                            How We Deliver
                         </span>
                         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                            A Structured Assessment Approach
+                            How We Deliver
                         </h2>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Typically delivered in 4-6 weeks, tailored to your organization scope.
+                            The assessment is executed using a structured, time-bound methodology, typically delivered in 2-4 weeks.
                         </p>
                     </motion.div>
 
@@ -418,17 +448,17 @@ function DataQualityAssessmentPage({}: Props) {
                     >
                         <span className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-2 text-sm font-medium text-blue-600 dark:text-blue-400 mb-4">
                             <TrendingUp className="h-4 w-4" />
-                            Business Outcomes
+                            Deliverables
                         </span>
                         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                            What You Achieve
+                            Key Deliverables
                         </h2>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Tangible outcomes that enable confident decision-making and investment prioritization.
+                            Comprehensive documentation and analysis delivered at the conclusion of the assessment.
                         </p>
                     </motion.div>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {outcomes.map((outcome, index) => (
                             <motion.div
                                 key={index}
@@ -450,6 +480,50 @@ function DataQualityAssessmentPage({}: Props) {
             </section>
 
             <section className="py-16 lg:py-24 bg-background">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center mb-12"
+                    >
+                        <span className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-2 text-sm font-medium text-blue-600 dark:text-blue-400 mb-4">
+                            <Clock className="h-4 w-4" />
+                            Engagement Model
+                        </span>
+                        <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                            How We Engage
+                        </h2>
+                    </motion.div>
+
+                    <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                        {[
+                            { icon: Clock, label: "Duration", value: "2-4 Weeks", detail: "Depending on scope and complexity" },
+                            { icon: Users, label: "Delivery Model", value: "Structured Assessment", detail: "With periodic stakeholder reviews" },
+                            { icon: Target, label: "Outcome", value: "Clear Visibility", detail: "Into data quality risks with improvement roadmap" }
+                        ].map((item, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                className="text-center p-8 rounded-3xl bg-card/50 border border-border/50 hover:border-blue-500/30 transition-all duration-300"
+                            >
+                                <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center mx-auto mb-4">
+                                    <item.icon className="h-6 w-6 text-blue-500" />
+                                </div>
+                                <div className="text-sm text-muted-foreground mb-1">{item.label}</div>
+                                <div className="text-xl font-semibold text-foreground mb-2">{item.value}</div>
+                                <p className="text-sm text-muted-foreground">{item.detail}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-16 lg:py-24 bg-muted/30">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -481,9 +555,9 @@ function DataQualityAssessmentPage({}: Props) {
                                     transition={{ duration: 0.5, delay: 0.3 }}
                                     className="text-3xl sm:text-4xl font-bold text-foreground mb-6"
                                 >
-                                    Begin Your Journey to{" "}
+                                    Begin with{" "}
                                     <span className="bg-linear-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
-                                        Data Clarity
+                                        Clarity
                                     </span>
                                 </motion.h2>
 
@@ -494,8 +568,8 @@ function DataQualityAssessmentPage({}: Props) {
                                     transition={{ duration: 0.5, delay: 0.4 }}
                                     className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto"
                                 >
-                                    Most organizations start their data quality journey with an assessment. 
-                                    Let us help you establish the foundation for sustained data trust.
+                                    If data quality issues are increasing risk, slowing decisions, or creating 
+                                    operational inefficiencies, a structured assessment provides the most effective starting point.
                                 </motion.p>
 
                                 <motion.div
@@ -510,7 +584,7 @@ function DataQualityAssessmentPage({}: Props) {
                                         onClick={() => navigate("/contact")}
                                         className="h-14 px-8 text-base font-semibold rounded-2xl bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 group"
                                     >
-                                        Request Assessment
+                                        Start a Data Quality Assessment
                                         <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                                     </Button>
                                     <Button 
@@ -520,7 +594,7 @@ function DataQualityAssessmentPage({}: Props) {
                                         className="h-14 px-8 text-base font-semibold rounded-2xl border-2 hover:bg-secondary/80 transition-all duration-300 group"
                                     >
                                         <MessageSquare className="mr-2 h-5 w-5" />
-                                        Schedule Discussion
+                                        Schedule a Discussion
                                     </Button>
                                 </motion.div>
                             </div>

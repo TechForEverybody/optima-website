@@ -48,14 +48,12 @@ const outcomes = [
     { id: "governance", label: "Data Governance", desc: "Stewardship and accountability models", icon: CheckCircle2 }
 ]
 
-function ConnectorArrow({ delay = 0, direction = "down" }: { delay?: number; direction?: "down" | "right" }) {
+function ConnectorArrow({ direction = "down" }: { delay?: number; direction?: "down" | "right" }) {
     if (direction === "right") {
         return (
             <motion.div
                 initial={{ opacity: 0, scaleX: 0 }}
                 whileInView={{ opacity: 1, scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay }}
                 className="hidden lg:flex items-center gap-1 origin-left px-2"
             >
                 <div className="w-12 h-px bg-linear-to-r from-sky-400/40 to-sky-300" />
@@ -67,8 +65,6 @@ function ConnectorArrow({ delay = 0, direction = "down" }: { delay?: number; dir
         <motion.div
             initial={{ opacity: 0, scaleY: 0 }}
             whileInView={{ opacity: 1, scaleY: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay }}
             className="flex flex-col items-center gap-1 my-8 origin-top"
         >
             <div className="w-px h-10 bg-linear-to-b from-sky-400/30 to-sky-300/80" />
@@ -102,8 +98,6 @@ export default function HomeDiagram({ }: Props) {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     className="text-center mb-16"
                 >
                     <div className="inline-flex items-center gap-2 mb-5">
@@ -125,8 +119,6 @@ export default function HomeDiagram({ }: Props) {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
                 >
                     <div className="flex items-center gap-2 mb-5">
                         <div className="w-2 h-2 rounded-full bg-sky-400" />
@@ -136,13 +128,11 @@ export default function HomeDiagram({ }: Props) {
                         <div className="flex-1 h-px bg-linear-to-r from-sky-400/30 to-transparent" />
                     </div>
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                        {dataSources.map((source, index) => (
+                        {dataSources.map((source) => (
                             <motion.div
                                 key={source.id}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.4, delay: index * 0.1 }}
                                 className="group"
                             >
                                 <div className="relative p-5 rounded-xl bg-white/4 border border-white/8 hover:border-sky-400/30 hover:bg-white/7 transition-all duration-300">
@@ -162,13 +152,11 @@ export default function HomeDiagram({ }: Props) {
                     </div>
                 </motion.div>
 
-                <ConnectorArrow delay={0.4} />
+                <ConnectorArrow delay={0.1} />
 
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.5 }}
                 >
                     <div className="flex items-center gap-2 mb-5">
                         <div className="w-2 h-2 rounded-full bg-sky-400" />
@@ -187,8 +175,6 @@ export default function HomeDiagram({ }: Props) {
                                     <motion.div
                                         initial={{ opacity: 0, y: 20 }}
                                         whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.5, delay: 0.6 + index * 0.15 }}
                                         className="group"
                                     >
                                         <div className="relative h-full p-5 rounded-xl bg-white/4 border border-white/8 hover:border-sky-400/30 hover:bg-white/6 transition-all duration-300">
@@ -234,13 +220,11 @@ export default function HomeDiagram({ }: Props) {
                     </div>
                 </motion.div>
 
-                <ConnectorArrow delay={1} />
+                <ConnectorArrow delay={0.1} />
 
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 1.1 }}
                     className="max-w-3xl mx-auto"
                 >
                     <div className="relative p-6 sm:p-8 rounded-2xl border-2 border-sky-400/25 bg-linear-to-r from-sky-500/8 via-blue-500/6 to-sky-500/8 overflow-hidden">
@@ -272,8 +256,6 @@ export default function HomeDiagram({ }: Props) {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 1.3 }}
                 >
                     <div className="flex items-center gap-2 mb-5">
                         <div className="w-2 h-2 rounded-full bg-amber-400" />
@@ -283,13 +265,11 @@ export default function HomeDiagram({ }: Props) {
                         <div className="flex-1 h-px bg-linear-to-r from-amber-400/30 to-transparent" />
                     </div>
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                        {outcomes.map((output, index) => (
+                        {outcomes.map((output) => (
                             <motion.div
                                 key={output.id}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.4, delay: 1.4 + index * 0.1 }}
                                 className="group"
                             >
                                 <div className="relative p-5 rounded-xl bg-white/4 border border-white/8 hover:border-amber-400/30 hover:bg-white/7 transition-all duration-300">
@@ -312,8 +292,6 @@ export default function HomeDiagram({ }: Props) {
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 1.8 }}
                     className="mt-14 pt-8 border-t border-white/6"
                 >
                     <p className="text-center text-sm text-slate-500">

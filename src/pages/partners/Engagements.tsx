@@ -290,7 +290,7 @@ export default function Engagements({}: Props) {
 
                         <ScrollFloat
                             containerClassName="!mb-0"
-                            textClassName="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight"
+                            textClassName="text-1xl sm:text-2xl lg:text-3xl font-bold text-foreground tracking-tight"
                             animationDuration={0.8}
                             ease="back.out(1.5)"
                             scrollStart="center bottom+=30%"

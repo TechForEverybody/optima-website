@@ -18,7 +18,6 @@ import {
     SheetTrigger,
 } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
-import GlassSurface from '@/components/GlassSurface'
 
 const solutionItems = [
     {
@@ -86,34 +85,11 @@ function Header() {
                 className={cn(
                     'transition-all duration-700',
                     isScrolled
-                        ? 'mx-0'
-                        : 'mx-4 sm:mx-6 lg:mx-8 mt-2'
+                        ? 'mx-0 backdrop-blur-3xl'
+                        : ''
                 )}
             >
-                <GlassSurface
-                    width="100%"
-                    height="auto"
-                    borderRadius={isScrolled ? 0 : 20}
-                    borderWidth={0.05}
-                    brightness={55}
-                    opacity={0.9}
-                    blur={14}
-                    displace={0}
-                    backgroundOpacity={0.15}
-                    saturation={1.6}
-                    distortionScale={-160}
-                    redOffset={0}
-                    greenOffset={8}
-                    blueOffset={16}
-                    className={cn(
-                        'transition-all duration-700 overflow-visible!',
-                        isScrolled ? 'rounded-none!' : 'rounded-2xl!'
-                    )}
-                    style={{
-                        width: '100%',
-                        height: 'auto',
-                    }}
-                >
+               
                     <nav className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
                         <div className="flex h-20 items-center justify-between lg:h-20">
                             <motion.div
@@ -310,7 +286,6 @@ function Header() {
                             </div>
                         </div>
                     </nav>
-                </GlassSurface>
             </div>
         </motion.header>
     )

@@ -1,61 +1,21 @@
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from "motion/react"
+import { motion } from "motion/react"
 import { ArrowRight, Mail, ShieldCheck, Activity, Layers, Gauge, Database, CheckCircle2, BarChart3, Link2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useNavigate } from "react-router-dom"
-import { useRef, useMemo, useCallback } from "react"
+import {  useMemo } from "react"
 import { useTheme } from "@/providers/theme-provider"
-import Aurora from "@/components/Aurora"
 import RotatingText from "@/components/RotatingText"
-import SplashCursor from "@/components/SplashCursor"
 import ShinyText from "@/components/ShinyText"
 import GradientText from "@/components/GradientText"
 
 type Props = {}
 
-function MagneticWrapper({ children, strength = 0.15 }: { children: React.ReactNode; strength?: number }) {
-    const ref = useRef<HTMLDivElement>(null)
-    const x = useMotionValue(0)
-    const y = useMotionValue(0)
-    const springX = useSpring(x, { stiffness: 200, damping: 20 })
-    const springY = useSpring(y, { stiffness: 200, damping: 20 })
-
-    const handleMouseMove = useCallback((e: React.MouseEvent) => {
-        if (!ref.current) return
-        const rect = ref.current.getBoundingClientRect()
-        x.set((e.clientX - rect.left - rect.width / 2) * strength)
-        y.set((e.clientY - rect.top - rect.height / 2) * strength)
-    }, [x, y, strength])
-
-    const handleMouseLeave = useCallback(() => {
-        x.set(0)
-        y.set(0)
-    }, [x, y])
-
-    return (
-        <motion.div
-            ref={ref}
-            style={{ x: springX, y: springY }}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-        >
-            {children}
-        </motion.div>
-    )
-}
 
 export default function HomeHero({ }: Props) {
     const navigate = useNavigate()
-    const containerRef = useRef<HTMLElement>(null)
     const { theme } = useTheme()
 
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start start", "end start"]
-    })
 
-    const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
-    const heroOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0])
-    const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.92])
 
     const isDark = useMemo(() => {
         return theme === "dark" ||
@@ -71,30 +31,13 @@ export default function HomeHero({ }: Props) {
     return (
         // <ClickSpark sparkColor={isDark ? "#8EBDFF" : "#3182ce"} sparkSize={12} sparkRadius={20} sparkCount={10} duration={500}>
         <section className="relative w-full ">
-            <SplashCursor
-                SIM_RESOLUTION={128}
-                DYE_RESOLUTION={1024}
-                DENSITY_DISSIPATION={3}
-                VELOCITY_DISSIPATION={2}
-                PRESSURE={0.1}
-                CURL={3}
-                SPLAT_RADIUS={0.15}
-                SPLAT_FORCE={4000}
-                SHADING={true}
-                COLOR_UPDATE_SPEED={8}
-                BACK_COLOR={{ r: 0, g: 0, b: 0 }}
-                TRANSPARENT={true}
-            />
+
 
             <div className="relative ">
-                <div className="absolute inset-0 z-0">
-                    <Aurora
-                        key={theme}
-                        colorStops={auroraColors}
-                        amplitude={1.4}
-                        blend={0.6}
-                        speed={0.4}
-                    />
+                <div className="absolute inset-0 z-0" style={{
+                    background: `radial-gradient(circle at 20% 30%, ${auroraColors[0]}33, transparent 80%), radial-gradient(circle at 70% 20%, ${auroraColors[1]}33, transparent 80%), radial-gradient(circle at 50% 80%, ${auroraColors[2]}33, transparent 80%)`
+                }}>
+                    
                 </div>
 
                 <div className="absolute inset-0 z-1 hidden dark:block bg-background/70" />
@@ -300,7 +243,6 @@ export default function HomeHero({ }: Props) {
                 />
 
                 <motion.div
-                    style={{ y: heroY, opacity: heroOpacity, scale: heroScale }}
                     className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 flex flex-col items-center justify-center min-h-screen pt-36 "
                 >
                     <motion.div
@@ -372,7 +314,6 @@ export default function HomeHero({ }: Props) {
                             transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
                             className="flex flex-col sm:flex-row items-center justify-center gap-4"
                         >
-                            <MagneticWrapper strength={0.12}>
                                 <Button
                                     size="lg"
                                     onClick={() => navigate("/contact")}
@@ -381,8 +322,6 @@ export default function HomeHero({ }: Props) {
                                     Start Assessment
                                     <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                                 </Button>
-                            </MagneticWrapper>
-                            <MagneticWrapper strength={0.12}>
                                 <Button
                                     size="lg"
                                     variant="outline"
@@ -392,7 +331,6 @@ export default function HomeHero({ }: Props) {
                                     <Mail className="mr-2 h-4 w-4" />
                                     Contact Now
                                 </Button>
-                            </MagneticWrapper>
                         </motion.div>
                     </div>
 
@@ -400,7 +338,7 @@ export default function HomeHero({ }: Props) {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.9, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
-                        className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto"
+                        className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto pb-5"
                     >
                         {[
                             { icon: ShieldCheck, label: "Data Validation", desc: "Automated quality checks" },

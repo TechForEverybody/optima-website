@@ -1,5 +1,5 @@
-import { useRef, useState } from "react"
-import { motion, useScroll, useTransform, useInView } from "motion/react"
+import { useMemo, useRef, useState } from "react"
+import { motion, useInView } from "motion/react"
 import {
     Search,
     Activity,
@@ -13,12 +13,10 @@ import {
     Fingerprint,
     Plus
 } from "lucide-react"
-import Aurora from "@/components/Aurora"
 import ScrollReveal from "@/components/ScrollReveal"
 import ScrollFloat from "@/components/ScrollFloat"
 import CountUp from "@/components/CountUp"
 import TrueFocus from "@/components/TrueFocus"
-import MagnetLines from "@/components/MagnetLines"
 import { useTheme } from "@/providers/theme-provider"
 
 type Props = {}
@@ -77,53 +75,40 @@ const principles = [
     }
 ]
 
-export default function About({}: Props) {
+export default function About({ }: Props) {
     const { theme } = useTheme()
     const isDark = theme === "dark" ||
         (theme === "system" && typeof window !== "undefined" &&
             window.matchMedia("(prefers-color-scheme: dark)").matches)
+    const auroraColors = useMemo((): [string, string, string] => {
+        return isDark
+            ? ["#1a3a6b", "#27D4FF", "#b7791f"]
+            : ["#4361ee", "#3a86ff", "#f77f00"]
+    }, [isDark])
 
-    const heroRef = useRef<HTMLDivElement>(null)
-    const { scrollYProgress: heroScroll } = useScroll({
-        target: heroRef,
-        offset: ["start start", "end start"]
-    })
-    const heroOpacity = useTransform(heroScroll, [0, 0.7], [1, 0])
-    const heroScale = useTransform(heroScroll, [0, 0.7], [1, 0.9])
 
     return (
         <section className="relative bg-background">
 
             <motion.div
-                ref={heroRef}
-                style={{ opacity: heroOpacity, scale: heroScale }}
                 className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
             >
-                <div className="absolute inset-0">
-                    <Aurora
-                        colorStops={isDark
-                            ? ["#1a0e3e", "#2d1b69", "#0f172a"]
-                            : ["#dbeafe", "#c7d2fe", "#e0e7ff"]
-                        }
-                        amplitude={1.2}
-                        blend={0.6}
-                        speed={0.3}
-                    />
-                    <div className="absolute inset-0 bg-background/30 dark:bg-background/40" />
+                <div className="absolute inset-0 z-0" style={{
+                    background: `radial-gradient(circle at 20% 30%, ${auroraColors[0]}33, transparent 80%), radial-gradient(circle at 70% 20%, ${auroraColors[1]}33, transparent 80%), radial-gradient(circle at 50% 80%, ${auroraColors[2]}33, transparent 80%)`
+                }}>
+
                 </div>
 
                 <div className="relative z-10 text-center px-6 sm:px-8 max-w-5xl mx-auto">
                     <motion.div
                         initial={{ scaleX: 0 }}
                         animate={{ scaleX: 1 }}
-                        transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
                         className="w-20 h-px bg-primary mx-auto mb-8 origin-center"
                     />
 
                     <motion.span
                         initial={{ opacity: 0, letterSpacing: "0.6em" }}
                         animate={{ opacity: 1, letterSpacing: "0.3em" }}
-                        transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                         className="text-xs sm:text-sm font-semibold uppercase text-primary tracking-[0.3em] block mb-8"
                     >
                         About Value Assure Consultancy
@@ -133,7 +118,6 @@ export default function About({}: Props) {
                         <motion.h1
                             initial={{ y: "110%" }}
                             animate={{ y: 0 }}
-                            transition={{ duration: 1.1, delay: 0.4, ease: [0.76, 0, 0.24, 1] }}
                             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-foreground leading-[1.05] tracking-tight"
                         >
                             Building Trusted
@@ -144,7 +128,6 @@ export default function About({}: Props) {
                         <motion.h1
                             initial={{ y: "110%" }}
                             animate={{ y: 0 }}
-                            transition={{ duration: 1.1, delay: 0.55, ease: [0.76, 0, 0.24, 1] }}
                             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-primary leading-[1.05] tracking-tight"
                         >
                             Data Foundations
@@ -154,7 +137,6 @@ export default function About({}: Props) {
                     <motion.p
                         initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.9, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
                         className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
                     >
                         Through clarity, discipline, and sustained ownership.
@@ -163,7 +145,6 @@ export default function About({}: Props) {
                     <motion.div
                         initial={{ scaleX: 0 }}
                         animate={{ scaleX: 1 }}
-                        transition={{ duration: 1.2, delay: 1.2, ease: [0.76, 0, 0.24, 1] }}
                         className="w-20 h-px bg-primary mx-auto mt-10 origin-center"
                     />
                 </div>
@@ -171,7 +152,6 @@ export default function About({}: Props) {
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 1.8, duration: 0.6 }}
                     className="absolute bottom-12 left-1/2 -translate-x-1/2"
                 >
                     <motion.div
@@ -208,8 +188,6 @@ export default function About({}: Props) {
                         <motion.div
                             initial={{ opacity: 0, x: -40 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, margin: "-80px" }}
-                            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
                             className="relative pl-8 sm:pl-10 ml-2 sm:ml-8 lg:ml-16"
                         >
                             <div className="absolute left-0 top-0 bottom-0 w-px bg-linear-to-b from-primary via-primary/40 to-transparent" />
@@ -241,8 +219,6 @@ export default function About({}: Props) {
                         <motion.div
                             initial={{ scaleX: 0 }}
                             whileInView={{ scaleX: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
                             className="w-24 h-0.5 bg-linear-to-r from-primary to-primary/20 origin-left"
                         />
                     </div>
@@ -252,8 +228,6 @@ export default function About({}: Props) {
                             <motion.p
                                 initial={{ opacity: 0, y: 28 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-60px" }}
-                                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                                 className="text-xl sm:text-2xl text-foreground leading-relaxed font-medium"
                             >
                                 We believe that trusted data is not achieved through one-time fixes or isolated initiatives.
@@ -262,8 +236,6 @@ export default function About({}: Props) {
                             <motion.p
                                 initial={{ opacity: 0, y: 28 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-60px" }}
-                                transition={{ duration: 0.8, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
                                 className="text-lg text-muted-foreground leading-relaxed"
                             >
                                 It requires a structured, business-led approach that combines clear accountability,
@@ -273,33 +245,11 @@ export default function About({}: Props) {
                             <motion.p
                                 initial={{ opacity: 0, y: 28 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-60px" }}
-                                transition={{ duration: 0.8, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
                                 className="text-lg text-muted-foreground leading-relaxed"
                             >
                                 Our focus is on helping organizations move from reactive data correction to proactive
                                 data confidence — where data quality is embedded into daily operations and decision-making.
                             </motion.p>
-                        </div>
-
-                        <div className="lg:col-span-5 flex items-center justify-center">
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.7, rotate: -8 }}
-                                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 1, delay: 0.2, type: "spring", stiffness: 80, damping: 15 }}
-                                className="w-full max-w-xs sm:max-w-sm aspect-square rounded-3xl overflow-hidden border border-border/50 bg-card/30 backdrop-blur-sm"
-                            >
-                                <MagnetLines
-                                    rows={7}
-                                    columns={7}
-                                    containerSize="100%"
-                                    lineColor={isDark ? "rgba(129, 140, 248, 0.6)" : "rgba(67, 56, 202, 0.5)"}
-                                    lineWidth="2px"
-                                    lineHeight="20px"
-                                    baseAngle={0}
-                                />
-                            </motion.div>
                         </div>
                     </div>
 
@@ -308,21 +258,11 @@ export default function About({}: Props) {
                             { title: "Clarity", desc: "Clear accountability and well-defined quality standards across every layer", accent: "from-blue-500/20 to-indigo-500/5" },
                             { title: "Discipline", desc: "Repeatable controls embedded seamlessly into daily operations and workflows", accent: "from-violet-500/20 to-purple-500/5" },
                             { title: "Ownership", desc: "Sustained governance with measurable outcomes and long-term commitment", accent: "from-emerald-500/20 to-teal-500/5" }
-                        ].map((item, i) => (
+                        ].map((item) => (
                             <motion.div
                                 key={item.title}
                                 initial={{ opacity: 0, y: 50, rotateX: 15 }}
                                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                                viewport={{ once: true, margin: "-30px" }}
-                                transition={{
-                                    duration: 0.7,
-                                    delay: i * 0.15,
-                                    ease: [0.16, 1, 0.3, 1]
-                                }}
-                                whileHover={{
-                                    y: -10,
-                                    transition: { type: "spring", stiffness: 400, damping: 15 }
-                                }}
                                 className="group relative p-8 sm:p-10 rounded-3xl bg-card/80 backdrop-blur-sm border border-border hover:border-primary/25 transition-colors duration-500 cursor-default overflow-hidden"
                                 style={{ perspective: "800px" }}
                             >
@@ -365,8 +305,6 @@ export default function About({}: Props) {
                         <motion.p
                             initial={{ opacity: 0, y: 16 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.7, delay: 0.2 }}
                             className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
                         >
                             We help organizations assess, control, and sustain data quality across SAP and
@@ -390,8 +328,6 @@ export default function About({}: Props) {
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0 }}
                                         whileInView={{ opacity: 1, scale: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.9, type: "spring", stiffness: 80, damping: 12 }}
                                         className="relative z-10"
                                     >
                                         <div className="w-36 h-36 rounded-full bg-linear-to-br from-primary via-primary/90 to-primary/70 flex items-center justify-center shadow-2xl shadow-primary/30 ring-4 ring-primary/10 dark:ring-primary/15">
@@ -407,25 +343,19 @@ export default function About({}: Props) {
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0 }}
                                         whileInView={{ opacity: 1, scale: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 1.4, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                                         className="absolute -inset-8 rounded-full border border-dashed border-primary/15 dark:border-primary/25"
                                     />
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0 }}
                                         whileInView={{ opacity: 1, scale: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 1.4, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
                                         className="absolute -inset-16 rounded-full border border-dotted border-primary/8 dark:border-primary/15"
                                     />
 
-                                    {[0, 90, 180, 270].map((angle, i) => (
+                                    {[0, 90, 180, 270].map((angle) => (
                                         <motion.div
                                             key={angle}
                                             initial={{ opacity: 0 }}
                                             whileInView={{ opacity: 1 }}
-                                            viewport={{ once: true }}
-                                            transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
                                             className="absolute top-1/2 left-1/2 w-24 h-px origin-left"
                                             style={{ transform: `rotate(${angle}deg)` }}
                                         >
@@ -451,12 +381,6 @@ export default function About({}: Props) {
                                 key={stage.title}
                                 initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40, rotate: i % 2 === 0 ? -2 : 2 }}
                                 whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-                                viewport={{ once: true, margin: "-30px" }}
-                                transition={{
-                                    duration: 0.7,
-                                    delay: i * 0.1,
-                                    ease: [0.16, 1, 0.3, 1]
-                                }}
                                 className="relative flex items-start gap-5 p-6 rounded-2xl bg-card border border-border"
                             >
                                 <div className={`w-12 h-12 rounded-xl bg-linear-to-br ${stage.gradient} flex items-center justify-center shadow-lg shrink-0`}>
@@ -477,8 +401,6 @@ export default function About({}: Props) {
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-50px" }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                         className="relative rounded-3xl border border-border bg-card/60 backdrop-blur-sm overflow-hidden"
                     >
                         <div className="absolute inset-0 bg-linear-to-r from-primary/3 via-transparent to-primary/3" />
@@ -556,16 +478,12 @@ export default function About({}: Props) {
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-50px" }}
-                        transition={{ duration: 0.8, delay: 0.15 }}
                         className="mt-20 lg:mt-28 relative"
                     >
                         <div className="max-w-3xl mx-auto text-center">
                             <motion.div
                                 initial={{ scaleX: 0 }}
                                 whileInView={{ scaleX: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
                                 className="w-16 h-px bg-primary/40 mx-auto mb-8 origin-center"
                             />
 
@@ -583,8 +501,6 @@ export default function About({}: Props) {
                             <motion.div
                                 initial={{ scaleX: 0 }}
                                 whileInView={{ scaleX: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.8, delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
                                 className="w-16 h-px bg-primary/40 mx-auto mt-8 origin-center"
                             />
                         </div>
@@ -693,18 +609,6 @@ function LifecycleCard({
         <motion.div
             initial={{ opacity: 0, y: index === 0 ? 40 : index === 2 ? -40 : 0, x: index === 3 ? 40 : index === 1 ? -40 : 0 }}
             whileInView={{ opacity: 1, y: 0, x: 0 }}
-            viewport={{ once: true }}
-            transition={{
-                duration: 0.8,
-                delay: 0.4 + index * 0.12,
-                type: "spring",
-                stiffness: 100,
-                damping: 15
-            }}
-            whileHover={{
-                y: -6,
-                transition: { type: "spring", stiffness: 400, damping: 15 }
-            }}
             className="group w-64 cursor-default"
         >
             <div className={`relative p-7 rounded-2xl bg-card border border-border group-hover:border-primary/30 transition-all duration-500 group-hover:shadow-xl ${stage.glow}`}>

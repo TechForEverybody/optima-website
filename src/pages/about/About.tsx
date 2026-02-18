@@ -8,7 +8,6 @@ import {
     Target,
     Layers,
     Settings,
-    ChevronDown,
     Eye,
     Fingerprint,
     Plus
@@ -91,7 +90,7 @@ export default function About({ }: Props) {
         <section className="relative bg-background">
 
             <motion.div
-                className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
+                className="relative pt-36 pb-5 flex flex-col items-center justify-center overflow-hidden"
             >
                 <div className="absolute inset-0 z-0" style={{
                     background: `radial-gradient(circle at 20% 30%, ${auroraColors[0]}33, transparent 80%), radial-gradient(circle at 70% 20%, ${auroraColors[1]}33, transparent 80%), radial-gradient(circle at 50% 80%, ${auroraColors[2]}33, transparent 80%)`
@@ -149,36 +148,24 @@ export default function About({ }: Props) {
                     />
                 </div>
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="absolute bottom-12 left-1/2 -translate-x-1/2"
-                >
-                    <motion.div
-                        animate={{ y: [0, 10, 0] }}
-                        transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                        <ChevronDown className="w-5 h-5 text-muted-foreground/60" />
-                    </motion.div>
-                </motion.div>
             </motion.div>
 
 
-            <div className="relative py-28 lg:py-40 overflow-hidden">
-                <div
+            <div className="relative py-0 overflow-hidden">
+                {/* <div
                     className="absolute inset-0 opacity-[0.012] dark:opacity-[0.025]"
                     style={{
                         backgroundImage: `url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3h1v1H1V3zm2-2h1v1H3V1z' fill='%23888' fill-opacity='1'/%3E%3C/svg%3E")`
                     }}
-                />
+                /> */}
 
                 <div className="relative mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
                     <div className="max-w-4xl">
                         <ScrollReveal
                             enableBlur={true}
-                            baseOpacity={0.06}
-                            baseRotation={2}
-                            blurStrength={6}
+                            baseOpacity={0.01}
+                            baseRotation={5}
+                            blurStrength={1}
                             containerClassName="mb-14"
                             textClassName="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground leading-snug tracking-tight"
                         >
@@ -204,14 +191,15 @@ export default function About({ }: Props) {
             </div>
 
 
-            <div className="relative py-28 lg:py-36">
+            <div className="relative py-10">
                 <div className="absolute inset-0 bg-linear-to-b from-secondary/50 via-transparent to-secondary/30 dark:from-secondary/25 dark:via-transparent dark:to-secondary/15" />
 
                 <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
                     <div className="mb-16 lg:mb-20">
                         <ScrollFloat
                             containerClassName="mb-4"
-                            textClassName="text-3xl lg:text-4xl font-bold text-foreground tracking-tight"
+                            textClassName="text-3xl lg:text-xl font-bold text-foreground tracking-tight"
+                            
                         >
                             Our Philosophy
                         </ScrollFloat>
@@ -224,7 +212,7 @@ export default function About({ }: Props) {
                     </div>
 
                     <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
-                        <div className="lg:col-span-7 space-y-8">
+                        <div className="lg:col-span-12 space-y-8">
                             <motion.p
                                 initial={{ opacity: 0, y: 28 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -253,7 +241,7 @@ export default function About({ }: Props) {
                         </div>
                     </div>
 
-                    <div className="grid sm:grid-cols-3 gap-6 mt-20 lg:mt-28">
+                    <div className="grid sm:grid-cols-3 gap-6 mt-20">
                         {[
                             { title: "Clarity", desc: "Clear accountability and well-defined quality standards across every layer", accent: "from-blue-500/20 to-indigo-500/5" },
                             { title: "Discipline", desc: "Repeatable controls embedded seamlessly into daily operations and workflows", accent: "from-violet-500/20 to-purple-500/5" },
@@ -292,7 +280,7 @@ export default function About({ }: Props) {
             </div>
 
 
-            <div className="relative py-28 lg:py-36">
+            <div className="relative py-10">
                 <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
                     <div className="text-center mb-16 lg:mb-24">
                         <ScrollFloat
@@ -436,11 +424,11 @@ export default function About({ }: Props) {
             </div>
 
 
-            <div className="relative py-28 lg:py-36">
+            <div className="relative py-20">
                 <div className="absolute inset-0 bg-linear-to-t from-secondary/40 via-transparent to-secondary/20 dark:from-secondary/20 dark:via-transparent dark:to-secondary/10" />
 
                 <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
-                    <div className="mb-14 lg:mb-20">
+                    <div className="mb-14">
                         <ScrollFloat
                             containerClassName="mb-8"
                             textClassName="text-4xl sm:text-5xl lg:text-5xl font-bold text-foreground tracking-tight"
@@ -489,8 +477,8 @@ export default function About({ }: Props) {
 
                             <ScrollReveal
                                 enableBlur={true}
-                                baseOpacity={0.1}
-                                baseRotation={1}
+                                baseOpacity={0.01}
+                                baseRotation={5}
                                 blurStrength={3}
                                 containerClassName=""
                                 textClassName="text-lg sm:text-xl text-muted-foreground leading-relaxed"

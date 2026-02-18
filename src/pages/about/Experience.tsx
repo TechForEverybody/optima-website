@@ -86,7 +86,7 @@ export default function Experience({}: Props) {
     return (
         <section ref={sectionRef} className="relative bg-background">
 
-            <div className="relative py-24 lg:py-32 overflow-hidden">
+            <div className="relative py-10 overflow-hidden">
                 <div className="absolute inset-0 bg-linear-to-b from-secondary/30 via-transparent to-transparent dark:from-secondary/15" />
 
                 <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
@@ -206,7 +206,7 @@ export default function Experience({}: Props) {
             </div>
 
 
-            <div className="relative py-24 lg:py-32">
+            <div className="relative py-5">
                 <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
                     <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
                         <motion.div
@@ -276,7 +276,7 @@ export default function Experience({}: Props) {
             </div>
 
 
-            <div className="relative py-24 lg:py-32">
+            <div className="relative py-10">
                 <div className="absolute inset-0 bg-linear-to-b from-transparent via-secondary/30 to-transparent dark:via-secondary/15" />
 
                 <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
@@ -310,7 +310,7 @@ export default function Experience({}: Props) {
             </div>
 
 
-            <div className="relative py-24 lg:py-32">
+            <div className="relative py-10">
                 <div className="mx-auto max-w-5xl px-6 sm:px-8 lg:px-12">
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}

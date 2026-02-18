@@ -58,7 +58,7 @@ export default function Partners({}: Props) {
     return (
         <section ref={containerRef} className="relative bg-background overflow-hidden">
 
-            <div className="relative min-h-[70vh] lg:min-h-[80vh] flex items-center overflow-hidden">
+            <div className="relative  flex items-center overflow-hidden">
                 <div className="absolute inset-0">
                     <div className="absolute inset-0 bg-linear-to-b from-primary/8 via-primary/3 to-background dark:from-primary/12 dark:via-primary/5 dark:to-background" />
                     

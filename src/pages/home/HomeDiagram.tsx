@@ -295,8 +295,13 @@ export default function HomeDiagram({ }: Props) {
                     className="mt-14 pt-8 border-t border-white/6"
                 >
                     <p className="text-center text-sm text-slate-500">
-                        Tool-assisted delivery enabled by enterprise-grade platforms such as{" "}
-                        <span className="text-sky-400 font-semibold">Datagaps</span>.
+                        Tool-assisted delivery enabled by enterprise-grade platforms such as 
+                        {" "}
+
+                        <span className="text-sky-400 font-semibold">
+                        Datagaps, SAP Information Steward
+                            
+                            </span>.
                     </p>
                 </motion.div>
             </div>

@@ -7,7 +7,7 @@ const reasons = [
     {
         icon: Award,
         number: "01",
-        title: "SAP Experience",
+        title: "SAP and Non SAP Experience",
         stat: "25+",
         statSuffix: "yrs",
         description:

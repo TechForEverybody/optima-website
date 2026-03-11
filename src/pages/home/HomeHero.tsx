@@ -160,42 +160,6 @@ export default function HomeHero({ }: Props) {
                                 ))}
                             </div>
                         </motion.div>
-
-                        <motion.div
-                            animate={{ y: [0, -7, 0] }}
-                            transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-                            className="rounded-xl border border-border/50 dark:border-border/30 bg-white/70 dark:bg-card/50 backdrop-blur-lg p-3 shadow-md dark:shadow-sm"
-                        >
-                            <div className="flex items-center gap-2 mb-2">
-                                <div className="w-5 h-5 rounded-md bg-amber-500/20 dark:bg-amber-500/15 flex items-center justify-center">
-                                    <Link2 className="w-3 h-3 text-amber-600 dark:text-amber-400" />
-                                </div>
-                                <span className="text-[10px] font-semibold text-foreground/80 dark:text-foreground/70 uppercase tracking-wider">Data Chain</span>
-                            </div>
-                            <div className="flex items-center gap-1">
-                                {[0, 1, 2, 3, 4].map((i) => (
-                                    <div key={i} className="flex items-center gap-1">
-                                        <motion.div
-                                            initial={{ opacity: 0, scale: 0 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            transition={{ delay: 3.2 + i * 0.15 }}
-                                            className="w-6 h-5 rounded border border-border/50 dark:border-border/40 bg-muted/50 dark:bg-muted/40 flex items-center justify-center"
-                                        >
-                                            <span className="text-[7px] font-mono text-muted-foreground/80 dark:text-muted-foreground/60">
-                                                {["0xA3", "0xF7", "0x2B", "0xE1", "0x9C"][i]}
-                                            </span>
-                                        </motion.div>
-                                        {i < 4 && (
-                                            <motion.div
-                                                animate={{ opacity: [0.2, 0.7, 0.2] }}
-                                                transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.3 }}
-                                                className="w-2 h-[1px] bg-amber-500/50 dark:bg-amber-500/40"
-                                            />
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        </motion.div>
                     </motion.div>
 
                     <motion.div
@@ -278,14 +242,14 @@ export default function HomeHero({ }: Props) {
                                 animationSpeed={6}
                                 className="inline"
                             >
-                                Transforming Enterprise Data into
+                                Transforming Enterprise Data
                             </GradientText>
                         </motion.h1>
 
-                        <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[3rem] font-extrabold tracking-tighter leading-[0.95] mb-10 h-[1.1em] overflow-hidden flex items-center justify-center">
+                        <div className="text-[0.9rem] sm:text-[1rem] md:text-[1.5rem] lg:text-[2rem] xl:text-[3rem] font-extrabold tracking-tighter leading-[0.95] mb-10 h-[1.1em] overflow-hidden flex items-center justify-center">
                             <span className="text-primary">
                                 <RotatingText
-                                    texts={["Trusted Business Value.", "Specialized in SAP Data Quality.", "Migration Assurance","AI-Driven Validation.", "Reliable data across SAP ECC.", " S/4HANA, and integrated systems."]}
+                                    texts={["Trusted Business Value.", "Specialized in SAP and Non-SAP Data Quality.", "Migration Assurance","AI-Driven Validation.", "Reliable data across SAP and Non-SAP ECC.", " S/4HANA, and integrated systems."]}
                                     rotationInterval={2500}
                                     splitBy="words"
                                     staggerDuration={0}
@@ -303,8 +267,7 @@ export default function HomeHero({ }: Props) {
                             transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
                             className="text-lg md:text-xl lg:text-2xl text-muted-foreground font-normal leading-relaxed mx-auto max-w-2xl mb-12"
                         >
-                            Monitor, validate, and govern data quality across
-                            SAP and enterprise landscapes{" "}
+                            Monitor, validate, and govern data quality across SAP and Non SAP enterprise landscapes{" "}
                             <span className="text-foreground font-medium">continuously</span>.
                         </motion.p>
 

@@ -43,7 +43,27 @@ const frameworkSteps = [
         shortTitle: "Insights",
         description: "Quality KPIs, trends, and governance mechanisms that support audits, compliance, and executive decision-making.",
         color: "primary"
+    },
+    {
+        number: "06",
+        icon: Layers,
+        title: " ETL Testing",
+        shortTitle: "ETL Testing",
+        description: "Comprehensive testing of data pipelines, transformations, and integrations to ensure reliability and accuracy across the data lifecycle.",
+        color: "accent"
+    },
+    {
+        number: "07",
+        icon: Zap,
+        title: "BI Reports Testing",
+        shortTitle: "BI Testing",
+        description: "Validation of BI reports and dashboards to ensure they reflect accurate, timely, and actionable insights for end-users.",
+        color: "primary"
+
     }
+
+
+
 ]
 
 export default function OurApproach({ }: Props) {
